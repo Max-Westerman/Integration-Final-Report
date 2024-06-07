@@ -1,0 +1,10 @@
+\makeglossaries
+
+% Make dotted lines from the definition to the page numbers used
+\newglossarystyle{dottedlocations}{%
+    \setglossarystyle{list}%
+    \renewcommand*{\glossentry}[2]{%
+    \item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]
+    \glossentrydesc{##1}\dotfill ##2}%
+}
+\setglossarystyle{dottedlocations} % Use the stype

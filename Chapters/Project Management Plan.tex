@@ -1,7 +1,265 @@
-\documentclass{report}
-\usepackage{StyleSheet}
+\documentclass[12pt]{report}
+\usepackage{StyleSheets/main}
+
 \begin{document}
 
+\SectionuseSubSectionSizing
+\SubSectionuseSubSubSectionSizing
+\setlength{\parindent}{0pt} % Disables indentation
+
 \chapter{Project Management Plan}\label{ch:project-management-plan}
+
+\section{Week 1 (4/1/24 - 4/7/24)}
+\subsection*{4/4}
+
+\begin{itemize}
+    \item Danny Carey and Charlie Buttrick looked over the provided kits and used the material checklist to verify all materials for the project were missing. \textbf{Duration: 50 minutes}
+    \item Danny Carey and Charlie Buttrick test ultrasonic sensors. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\textbf{Week Summary:} Provided kits were checked and materials were verified. Ultrasonic Sensors were tested. Our objectives for next week will be to meet with Carter Sorenson and begin to talk about ideas for the obstacle test.
+
+\section{Week 2 (4/8/24 - 4/14/24)}
+\subsection*{4/8}
+
+\begin{itemize}
+    \item Danny Carey, Charlie Buttrick, and Max Westerman met to discuss the outline of the code. The idea to use classes was commonly agreed it would be most efficient due to making troubleshooting easier. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\subsection*{4/11}
+
+\begin{itemize}
+    \item Charlie Buttrick and Max Westerman met with Carter Sorenson for advice on the overall strategy of the project. The meeting also covered the subject of \gls{PID} controllers. \textbf{Duration: 60 minutes}
+    \item Charlie Buttrick worked on pseudo-code for the obstacle test. \textbf{Duration: 1 hour and 30 minutes}
+    \item Danny Carey began to work on the gripper, specifically a prototype design. \textbf{Duration: 1 hour}
+    \item Danny Carey and Max Westerman brainstormed ideas for the overall design of the vehicle, with a targeted focus on wheel placement. \textbf{Duration: 1 hour}
+\end{itemize}
+
+\textbf{Week Summary:} The outline of the code was decided on. A project strategy was created, and \gls{PID} controllers were discussed. Pseudo-code written for obstacle test. A gripper prototype was designed. Wheel placement was discussed. Our objectives for next week will be to begin the design of the vehicle and simple movement testing.
+
+\section{Week 3 (4/15/24 - 4/21/24)}
+\subsection*{4/15}
+
+\begin{itemize}
+    \item Max Westerman worked on color sensors and added debug statements. \textbf{Duration: 35 minutes}
+    \item Danny Carey and Max Westerman assembled wheels, motor controllers, and Teensy 4.1 board for design 1. \textbf{Duration: 1 hour and 45 minutes}
+\end{itemize}
+
+\subsection*{4/16}
+
+\begin{itemize}
+    \item Max Westerman ran a motor test for design 1. \textbf{Duration: 1 hour}
+    \item Max Westerman tested the resistance of black and silver screws that will be used to connect the battery and motor controller. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\subsection*{4/18}
+
+\begin{itemize}
+    \item Danny Carey continued work on the gripper arm and began to add wiring. \textbf{Duration: 1 hour and 30 minutes}
+    \item Charlie Buttrick and Max Westerman brainstormed ideas for code of the obstacle course and the location of the ultrasonic sensors on the vehicle. \textbf{Duration: 1 hour}
+    \item Charlie Buttrick and Max Westerman thought of ideas to fix side wheels that were stalling on forward movement. \textbf{Duration: 30 minutes}
+\end{itemize}
+
+\textbf{Week Summary:} Debug statements added to code. Wheels assembled with motor controllers and Teensy 4.1 for design 1. Motor test conducted. Resistance of screws tested for battery connection. Gripper wiring added. Obstacle code and ultrasonic sensor location discussed. Ideas to fix side wheels that were stalling generated. Our objectives for next week will be to work on our detailed design presentation and continue to build system, specifically the placement of the ultrasonic sensors.
+
+\section{Week 4 (4/22/24 - 4/28/24)}
+\subsection*{4/23}
+
+\begin{itemize}
+    \item Danny Carey and Charlie Buttrick began to work on detailed design review. \textbf{Duration: 1 hour}
+    \item Charlie Buttrick focused more on customer requirements, the project management plan, the purpose, and the current state of the project.
+    \item Danny Carey focused on the project design outline, the design matrix, and the current state of the project.
+\end{itemize}
+
+\subsection*{4/25}
+
+\begin{itemize}
+    \item Danny Carey and Charlie Buttrick moved ultrasonic sensors to the front of the vehicle. \textbf{Duration: 35 minutes}
+    \item Danny Carey and Charlie Buttrick added washers to the side wheels to try to fix the side wheels from stalling. \textbf{Duration: 30 minutes}
+    \item Danny Carey and Charlie Buttrick took apart Design 1, specifically the wiring and placement of the battery. The motor controllers and wheels are still intact. \textbf{Duration: 35 minutes}
+    \item Dylan Wright, Danny Carey, and Charlie Buttrick gave detailed design review presentation.
+\end{itemize}
+
+\textbf{Week Summary:} Detailed design review started. Ultrasonic sensors are placed in front of vehicles. Washers were placed under side wheels to try to fix stalling. Design 1 deconstructed (wiring/battery). Detailed design presentation takes place and feedback is given. Our objectives for next week will be to begin writing the obstacle code and discuss the line following code.
+
+\section{Week 5 (4/29/24 - 5/5/24)}
+\subsection*{4/30}
+
+\begin{itemize}
+    \item Charlie Buttrick and Max Westerman met to discuss and begin code for obstacle course test, specifically adding classes to the code for more scenarios. \textbf{Duration: 1 hour}
+    \item Charlie Buttrick and Max Westerman discussed the line following code. \textbf{Duration: 30 minutes}
+\end{itemize}
+
+\subsection*{5/2}
+
+\begin{itemize}
+    \item It was discovered that after Design 1 was taken apart, multiple wire tips were disconnected and broken. \textbf{Duration: 2 hours}
+    \item Charlie Buttrick tried to solder back one wire to the motor and accidentally burned the motor. The team bought a new motor.
+    \item Max used equipment in the innovation lab to solder back the wires to the motors and motor controllers.
+    \item Charlie Buttrick added to the ultrasonic code. \textbf{Duration: 1 hour}
+    \item Danny Carey began to build Design 2, focused on the placement of the battery and Teensy 4.1 board. Also, added wiring for the Teensy 4.1 board and battery. \textbf{Duration: 1 hour and 30 minutes}
+\end{itemize}
+
+\textbf{Week Summary:} Obstacle avoidance and line following code discussed. Multiple damages and breakages were discovered after Design 1 was deconstructed. Soldering was attempted but the motor broke. New motor was burnt and the innovation lab was used to solder wires. Ultrasonic code improved. Design 2 was built, battery placement and Teensy 4.1 placement and wiring focus. Our objectives for next week will be to test our obstacle avoidance code and make progress with building the gripper. Another objective will be to complete the gripper wiring for the gripper and test design 2 on the obstacle course.
+
+\section{Week 6 (5/6/24 - 5/12/24)}
+\subsection*{5/7}
+
+\begin{itemize}
+    \item Charlie Buttrick, Danny Carey, and Max Westerman combined the motor controller plate and battery/Teensy 4.1 board plate. \textbf{Duration: 30 minutes}
+    \item Charlie Buttrick, Danny Carey, and Max Westerman placed sensor mounts on the front of the vehicle and attached ultrasonic sensors. \textbf{Duration: 30 minutes}
+    \item Charlie Buttrick and Max Westerman verified the ultrasonic sensor code. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\subsection*{5/9}
+
+\begin{itemize}
+    \item Charlie Buttrick, Danny Carey, Dylan Wright, and Max Westerman tested the obstacle test. \textbf{Duration: 1 hour and 40 minutes}
+\end{itemize}
+
+\subsection*{5/10}
+
+\begin{itemize}
+    \item Danny Carey and Max Westerman completed the wiring for the gripper. \textbf{Duration: 1 hour and 40 minutes}
+\end{itemize}
+
+\subsection*{5/12}
+
+\begin{itemize}
+    \item Charlie Buttrick and Max Westerman tried to fix the side wheels' stalling issue by adding heavy mass to the vehicle. \textbf{Duration: 1 hour and 30 minutes}
+    \item Charlie Buttrick, Danny Carey, and Max Westerman decided to take apart Design 2.
+    \item Danny Carey builds customized sensor mounts in SolidWorks. \textbf{Duration: 1 hour}
+    \item Max Westerman takes apart all of Design 2 except the motor controller and wheel placement and wires. \textbf{Duration: 1 hour}
+    \item Charlie Buttrick and Max Westerman think about the idea of IR sensors. \textbf{Duration: 35 minutes}
+\end{itemize}
+
+\textbf{Weekly Summary:} Motor controller plate and battery/Teensy 4.1 plate combined. Sensor mounts and ultrasonic sensors are attached. Ultrasonic sensor code verified. Obstacle course run tested. Wiring for gripper completed. Heavy mass was added to the vehicle to fix the side wheels stalling. Design 2 taken apart. Customized sensor mounts built in SolidWorks. \gls{IR} sensor idea discussed. Our objectives for next week will be to test redesign Design 3 as well as test the gearboxes to see if they will or will not impact the speed. Also, sensor mounts will be printed for the ultrasonic sensors. We will also want to finish the line following code and begin testing and implement the \gls{IR} Array.
+
+\section{Week 7 (5/13/24 - 5/19/24)}
+\subsection*{5/13}
+
+\begin{itemize}
+    \item Danny Carey 3-D prints sensor mounts for Design 3. \textbf{Duration: 10 minutes}
+    \item Max Westerman tests the compatibility of gearboxes for torque motors. It is deemed successful thus 2 motors of the vehicle are replaced. \textbf{Duration: 30 minutes}
+    \item Max Westerman machined down a dead torque motor gearbox. This verified that the torque motor would be faster when modified. \textbf{Duration: 3 hours}
+\end{itemize}
+
+\subsection*{5/14}
+
+\begin{itemize}
+    \item Danny Carey and Max Westerman assembled Design 3, the plate with the motor controllers and wheels are attached to the plate with the Teensy 4.1 board as well as the battery. \textbf{Duration: 2 hours and 30 minutes}
+\end{itemize}
+
+\subsection*{5/16}
+
+\begin{itemize}
+    \item Danny Carey attaches the customized sensor mounts to the vehicle and the color and ultrasonic sensors are attached. \textbf{Duration: 40 minutes}
+    \item Charlie Buttrick, Dylan Wright, Danny Carey, and Max Westerman test Design 3 on the obstacle test. \textbf{Duration: 1 hour and 30 minutes}
+    \item Charlie Buttrick and Max Westerman test the basic line following code. \textbf{Duration: 35 minutes}
+    \item Danny Carey designed a sensor mount for the bottom of the vehicle. \textbf{Duration: 1 hour}
+\end{itemize}
+
+\subsection*{5/19}
+
+\begin{itemize}
+    \item Danny Carey and Max Westerman attach the gripper to the vehicle. \textbf{Duration: 1 hour}
+    \item Danny Carey and Max Westerman attach an \gls{IR} array and color sensor to the sensor mount on the bottom of the vehicle. \textbf{Duration: 1 hour and 30 minutes}
+\end{itemize}
+
+\textbf{Week Summary:} Sensor mounts for Design 3 printed. Compatibility of gearboxes for torque motors tested. 2 motors are replaced. Design 3 is assembled. Sensor mounts are attached. Design 3 tested on an obstacle test. Basic line following code tested. Sensor mount for bottom of vehicle designed. Gripper attached to the vehicle. \gls{IR} and color sensor attached to the vehicle. Our objectives for next week will be to clean up the wiring of the system, add pushbuttons to the end of the gripper arm, continue obstacle testing, test the line following code and improve the vehicle’s ability to follow the line as needed.
+
+\section{Week 8 (5/20/24 - 5/26/24)}
+\subsection*{5/20}
+
+\begin{itemize}
+    \item Danny Carey and Max Westerman rewired the color sensors, the gripper, the \gls{IR} array, and the ultrasonic sensor. \textbf{Duration: 1 hour and 20 minutes}
+    \item Danny Carey and Max Westerman implemented, coded, and wired the button toggle for the gripper. \textbf{Duration: 30 minutes}
+    \item Danny Carey and Max Westerman secured the plastic gripper gear via reversible super glue and lock tight. \textbf{Duration: 1 hour and 30 minutes}
+    \item Max Westerman coded the gripper pick-up and place schema and tested. \textbf{Duration: 1 hour}
+    \item The middle color sensor is burnt.
+    \item Max Westerman tested obstacle avoidance. \textbf{Duration: 2 hours}
+    \item Max Westerman designed and implemented a suspension system on the vehicle. \textbf{Duration: 3 hours}
+\end{itemize}
+
+\subsection*{5/21}
+
+\begin{itemize}
+    \item Max Westerman implemented the suspension system. \textbf{Duration: 1 hour and 25 minutes}
+    \item Max Westerman and Charlie Buttrick began to code the \gls{IR} array algorithm as well as brainstorm how to implement \gls{PID} logic. \textbf{Duration: 1 hour}
+    \item Max Westerman worked on pick-up and placement code for the system. \textbf{Duration: 1 hour and 10 minutes}
+    \item Danny Carey redesigned sensor mounts for the front of the vehicle after it was discovered it cracked. \textbf{Duration: 45 minutes}
+    \item Max Westerman and Charlie Buttrick worked on and tested the line following code. \textbf{Duration: 2 hours}
+    \item Danny Carey replaced the middle burnt color sensor. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\subsection*{5/22}
+
+\begin{itemize}
+    \item Danny Carey designed a mount for the end of the gripper arm via SolidWorks. \textbf{Duration: 1 hour}
+    \item Danny Carey and Max Westerman continued to wire the gripper as sensors and pushbuttons were being added. \textbf{Duration: 2 hours}
+\end{itemize}
+
+\subsection*{5/23}
+
+\begin{itemize}
+    \item Danny Carey and Charlie Buttrick attached a new sensor mount to the bottom side of the front end of the vehicle. \textbf{Duration: 1 hour}
+    \item Max Westerman color-calibrated the \gls{IR} array and updated the code. \textbf{Duration: 1 hour and 30 minutes}
+    \item Max Westerman wired the sensor mount on the bottom side of the front end of the vehicle. \textbf{Duration: 25 minutes}
+    \item Max Westerman added a vertical box length variable to the pickup and placement code to help center the vehicle. \textbf{Duration: 15 minutes}
+    \item Max Westerman improved the color sensor calibration for the front-end sensors of the vehicle. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+\subsection*{5/24}
+
+\begin{itemize}
+    \item Max Westerman completed the \gls{IR} array code with a calibrated error. \textbf{Duration: 45 minutes}
+    \item Max Westerman tested the \gls{IR} array code to make sure if the vehicle deviates from the line, it will correctly realign with the line. \textbf{Duration: 1 hour}
+    \item Max Westerman added an \gls{LED} feature that connects to the battery being turned on. \textbf{Duration: 45 minutes}
+\end{itemize}
+
+\textbf{Week Summary:} Gripper, color sensors, \gls{IR} array, and ultrasonic sensor rewired. A pushbutton for the gripper was added, wired, and coded. The \gls{IR} array was tested and completed. Our objectives for next week will be to test the gripper arm and test the full pick up and placement course.
+
+\section{Week 9 (5/27/24 - 6/2/24)}
+\subsection*{5/27}
+
+\begin{itemize}
+    \item Max Westerman and Danny Carey test gripper arm. \textbf{Duration: 2 hours}
+    \item Danny Carey designs a sensor mount for the ultrasonic sensor that will be put on the front of the vehicle. \textbf{Duration: 1 hour}
+\end{itemize}
+
+\subsection*{5/28}
+
+\begin{itemize}
+    \item Max Westerman and Charlie Buttrick calibrate and wire the ultrasonic sensor and mount the sensor mount as well as add the ultrasonic sensor to the mount. \textbf{Duration: 1 hour}
+    \item Max Westerman, Danny Carey, and Charlie Buttrick test the full line following and pickup and placement test. \textbf{Duration: 1 hour and 45 minutes}
+\end{itemize}
+
+\subsection*{5/30}
+
+\begin{itemize}
+    \item Charlie Buttrick, Danny Carey, Max Westerman, and Dylan Wright test vehicle on obstacle course and the test is deemed complete.
+    \item Charlie Buttrick, Danny Carey, Max Westerman, and Dylan Wright brainstorm ideas of how to fix the pickup and place test which is stemming from an ultrasonic sensor issue. \textbf{Duration: 30 minutes}
+\end{itemize}
+
+\subsection*{6/2}
+
+\begin{itemize}
+    \item Charlie Buttrick, Danny Carey, and Max Westerman improve color calibration of all sensors and alter ultrasonic sensor code. \textbf{Duration: 2 hours and 30 minutes}
+    \item Danny Carey and Max Westerman test line following and pick up and placement test and were able to get consecutive successful tests. \textbf{Duration: 1 hour}
+\end{itemize}
+
+\textbf{Week Summary:} The gripper arm is tested and the tests are deemed successful. An ultrasonic sensor is added. The obstacle test was completed. Our objectives for next week will be to test the pickup and placement test to get a complete test.
+
+\section{Week 10 (6/3/24 - 6/9/24)}
+\subsection*{6/3}
+
+\begin{itemize}
+    \item Charlie Buttrick, Danny Carey, Max Westerman, and Dylan Wright test vehicle on line following and pickup and placement course and the test is deemed complete.
+    \item Danny Carey and Dylan Wright take apart vehicle. \textbf{Duration: 25 minutes}
+\end{itemize}
+
+
+\SectionuseNormalSectionSizing
+\SubSectionuseNormalSectionSizing
 
 \end{document}

@@ -1,35 +1,19 @@
-\documentclass[12pt]{report}
-\usepackage{StyleSheet}
-\usepackage{tikz}
-\usetikzlibrary{external}
-\tikzexternalize[prefix=Graphs/tikz/]
+\documentclass[11pt]{report}
+\usepackage{StyleSheets/main}
+\usetikzlibrary{external}     % Allows for cached complitation
+\tikzexternalize[prefix=Graphs/tikz/] % Sets cache directory
 
 \begin{document}
-
-\begin{titlepage}
-    \centering
-    \Huge \textbf{\TITLENAME}
-    
-    \vspace{1cm}
-    
-    \Large \NAMES
-    
-    \vspace{0.5cm}
-    
-    \large \SCHOOLNAME
-    
-    \vfill
-    
-    \today
-    
-\end{titlepage}
+\input{Chapters/TitlePage}
 
 % ---------- %
 
+\microtypesetup{protrusion=false} % Kerning disabled
 \tableofcontents
 \listoffigures
 \lstlistoflistings
 \listoftables
+\microtypesetup{protrusion=true} % Kerning Enabled
 
 \newpage
 \onehalfspacing
@@ -46,7 +30,9 @@
 \input{Chapters/Summary}
 
 \singlespacing
+\microtypesetup{protrusion=false} % Kerning disabled
 \printglossary[type=\acronymtype]
+\microtypesetup{protrusion=true}  % Kerning Enabled
 
 \appendix
 \input{Appendix/Calibration Data}

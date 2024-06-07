@@ -1,0 +1,29 @@
+\setlength{\headheight}{30pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\CLASS \\ \today}
+\fancyhead[R]{\TITLENAME \\ \NAMES}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Redefine what a plain page looks like. New chapters are automatically
+% plain, and thus don't show the page numbers like our normal footers.
+% Changing that so they show the normal footer type.
+\fancypagestyle{plain}{
+  \fancyhf{} % clear all header and footer fields
+  \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% Removes the header & footer lines for code listings. They visually
+% interupt the code listings.
+\fancypagestyle{code}{
+  \fancyhf{} % Clear all header and footer fields
+  \fancyhead[L]{\CLASS \\ \today}
+  \fancyhead[R]{\TITLENAME \\ \NAMES}
+  \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0pt} % Remove header line
+  \renewcommand{\footrulewidth}{0pt} % Remove footer line
+}

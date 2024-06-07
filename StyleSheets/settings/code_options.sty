@@ -1,52 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                   %
-%   The purpose of this document is to provide the  %
-%   user with a simple and professional report      %
-%   format as well as all of the code required to   %
-%   produce tidy, legible documentation.            %
-%                                                   %
-%   Authors: Max E. Westerman, Daniel J. Carey      %
-%   Sponsored by maxwesterman.com                   %
-%                                                   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%% Variables %%%%%%%%%%%%%%%%%%%%
-\newcommand{\TITLENAME}{Title}
-\newcommand{\NAMES}{Contributors' Names}
-\newcommand{\CLASS}{Class Name}
-\newcommand{\SCHOOLNAME}{University Name}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Page layout and hyperlinks
-\usepackage[margin=1in]{geometry}   % Set page margins
-\usepackage{fancyhdr, lastpage}     % Custom headers and footers
-\usepackage{microtype}
-\usepackage{standalone}
-\usepackage{setspace}
-\usepackage{xcolor}                 % Allows setting custom colors
-\usepackage{hyperref}               % Hyperlinks
-\hypersetup{
-    colorlinks=true,
-    linkcolor={rgb,255:red,0;green,0;blue,139}, % Dark Blue
-    filecolor=red,
-    urlcolor=blue,
-    pdftitle={\TITLENAME}
-    pdfauthor ={\NAMES}
-    pdfpagemode=FullScreen,
-}
-
-
-% Math packages
-\usepackage{amsmath,amsthm,amssymb}
-
-% Graphics and tables
-\usepackage{graphicx}   % Include graphics
-\usepackage{subcaption} % Subcaptions for figures
-\usepackage{booktabs}   % Improved table formatting
-\usepackage{float}      % Better control over float positions
-
-% Code listing
-\usepackage{listings} % Code listings
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -60,7 +11,6 @@
 \definecolor{vscodecyan}{rgb}{0.18, 0.57, 0.68} % keyword/line#
 \definecolor{vscodegreen}{rgb}{0.00784,0.49803,0.098} %Comments
 \definecolor{vscodepurple}{rgb}{0.7254,0.3294,0.749}
-
 
 \lstdefinestyle{shared}{
     basicstyle=\footnotesize\ttfamily,
@@ -185,60 +135,3 @@
   showstringspaces=false,
   captionpos=b,
 }
-
-\usepackage{siunitx} % SI units and number formatting
-\sisetup{
-  group-separator={,},
-  group-four-digits=true,
-  unit-font-command=\small\text
-}
-
-% Miscellaneous
-\usepackage{url}             % URL handling
-\usepackage{bm}              % Bold math symbols
-
-% Section numbering depth
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-\usepackage{Graphs/GraphDefinitions}
-\usepackage{acronym}
-
-\setlength{\headheight}{30pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\CLASS \\ \today}
-\fancyhead[R]{\TITLENAME \\ \NAMES}
-\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\usepackage[Bjornstrup]{fncychap}
-
-% Redefine the plain page style used for chapter beginnings
-\fancypagestyle{plain}{
-  \fancyhf{} % clear all header and footer fields
-  \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
-
-\usepackage[acronym, toc]{glossaries-extra}
-\setabbreviationstyle[acronym]{long-short}
-\newacronym{TEMPS}{TEMPS}{System Test and Verifications}
-\newacronym{IR}{IR}{Infrared}
-\newacronym{ABHS}{ABHS}{Autonomous Box Handling System}
-\usepackage{cleveref}
-
-\makeglossaries
-
-% Define a new glossary style
-\newglossarystyle{dottedlocations}{%
-    % base it on the 'list' style:
-    \setglossarystyle{list}%
-    % Change the way the label is displayed:
-    \renewcommand*{\glossentry}[2]{%
-    \item[\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}}]
-    \glossentrydesc{##1}\dotfill ##2}%
-}
-
-% Use the new style
-\setglossarystyle{dottedlocations}

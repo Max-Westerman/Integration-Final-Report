@@ -1,0 +1,46 @@
+\onehalfspacing
+
+\definecolor{linkcolor}{rgb}{0.25882,0.25882,0.71372}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor, % Dark Blue
+    filecolor=red,
+    urlcolor=blue,
+    pdftitle={\TITLENAME}
+    pdfauthor ={\NAMES}
+    pdfpagemode=FullScreen,
+}
+
+\sisetup{
+  group-separator={,},
+  group-four-digits=true,
+  unit-font-command=\small\text
+}
+
+% Normal section format
+\newcommand{\SectionuseNormalSectionSizing}{
+  \titleformat{\section}
+    {\normalfont\Large\bfseries}{\thesection}{1em}{}
+}
+
+% Subsection-like section format
+\newcommand{\SectionuseSubSectionSizing}{
+  \titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+}
+
+% Normal subsection format
+\newcommand{\SubSectionuseNormalSectionSizing}{
+  \titleformat{\subsection}
+    {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+}
+
+% Sub-subsection-like subsection format
+\newcommand{\SubSectionuseSubSubSectionSizing}{
+  \titleformat{\subsection}
+    {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+}
+
+% Redefine the title for the List of Listings
+\renewcommand{\lstlistlistingname}{List of Listings}
