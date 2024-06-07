@@ -1,14 +1,28 @@
-\documentclass{article}
+\documentclass[11pt]{report}
+\usepackage{StyleSheets/main}
+\usepackage{etoolbox}
+
+\makeatletter
+% Redefine the \chapter* header command used by Bjornstrup style
+\def\@makeschapterhead#1{%
+  % Copy the definitions from \@makechapterhead and adjust spacing
+  \vspace*{50pt}% Adjust this value as needed to match \chapter spacing
+  {\parindent \z@ \raggedright \normalfont
+    \DOTIS{#1}
+    \par\nobreak
+    \vskip 40\p@  % Adjust this value as needed
+  }
+}
+\makeatother
 
 \begin{document}
 
-% Define a new counter
-\newcounter{mycounter}
+\chapter*{Extended Introduction}
+\section{Extended Background}
+More text here.
 
-% Set the value of the counter
-\setcounter{mycounter}{2}
-
-% Print the counter in Roman numeral form
-\Roman{mycounter}
+\chapter{Introduction}
+\section{Background}
+Some introductory text here.
 
 \end{document}

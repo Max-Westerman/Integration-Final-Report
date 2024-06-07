@@ -1,5 +1,6 @@
 \documentclass[11pt]{report}
 \usepackage{StyleSheets/main}
+\makeglossaries               % Only makes glossary in main file
 \usetikzlibrary{external}     % Allows for cached complitation
 \tikzexternalize[prefix=Graphs/tikz/] % Sets cache directory
 
@@ -9,10 +10,13 @@
 % ---------- %
 
 \microtypesetup{protrusion=false} % Kerning disabled
+\singlespacing
 \tableofcontents
 \listoffigures
 \lstlistoflistings
 \listoftables
+\chapter*{test}
+yo
 \microtypesetup{protrusion=true} % Kerning Enabled
 
 \newpage
