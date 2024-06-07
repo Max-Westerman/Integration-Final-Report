@@ -1,44 +1,66 @@
-\documentclass{article}
-\usepackage{pgfplots}
-\usepgfplotslibrary{colormaps} % Additional color maps
-\pgfplotsset{compat=newest} % Use newest version for better compatibility
+%http://tex.stackexchange.com/questions/99455/keyword-highlighting-of-c-using-listing#99455
+\documentclass[preview,border=5]{standalone}
+%\documentclass{article}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{dred}{rgb}{0.545,0,0}
+\definecolor{dblue}{rgb}{0,0,0.545}
+\definecolor{lgrey}{rgb}{0.9,0.9,0.9}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+
+% Code listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\definecolor{vscodelightgray}{rgb}{0.98, 0.98, 0.98} %Background
+\definecolor{vscodegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{vscodeblue}{rgb}{0.0862, 0.098, 0.976}
+\definecolor{vscodebluegreen}{rgb}{0.0588, 0.5215, 0.352} % Numbers
+\definecolor{vscodered}{rgb}{0.63, 0.082, 0.117} %Strings
+\definecolor{vscodecyan}{rgb}{0.18, 0.57, 0.68} % keyword/line#
+\definecolor{vscodegreen}{rgb}{0.00784,0.49803,0.098} %Comments
+
+
+\lstdefinelanguage{cpp}{
+    morekeywords={addCalibrationPoint},
+    keywordstyle=\color{vscodered},
+    backgroundcolor=\color{vscodelightgray},   
+    commentstyle=\color{vscodegreen},
+    %keywordstyle=\color{vscodeblue},
+    numberstyle=\color{vscodecyan}\bfseries\ttfamily,,
+    stringstyle=\color{vscodered},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    literate={0}{{{\color{vscodebluegreen}0}}}1
+            {1}{{{\color{vscodebluegreen}1}}}1
+            {2}{{{\color{vscodebluegreen}2}}}1
+            {3}{{{\color{vscodebluegreen}3}}}1
+            {4}{{{\color{vscodebluegreen}4}}}1
+            {5}{{{\color{vscodebluegreen}5}}}1
+            {6}{{{\color{vscodebluegreen}6}}}1
+            {7}{{{\color{vscodebluegreen}7}}}1
+            {8}{{{\color{vscodebluegreen}8}}}1
+            {9}{{{\color{vscodebluegreen}9}}}1,
+}
+
 
 \begin{document}
-
-\begin{figure}
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            xlabel={X axis},
-            ylabel={Y axis},
-            zlabel={Z axis},
-            xlabel style={sloped like x axis}, % Make x label follow the x axis
-            ylabel style={sloped like y axis}, % Make y label follow the y axis
-            zlabel style={sloped}, % Make z label follow the z axis or make it vertical
-            grid=major,
-            width=0.8\textwidth,
-            height=0.65\textwidth,
-            view={120}{40}, % Adjust the view angle for better visualization
-        ]
-            % Define points
-            \addplot3[only marks, color=red, mark=ball] coordinates {(2,3,5)};
-            \addplot3[only marks, color=blue, mark=ball] coordinates {(3,2,6)};
-
-            % Draw a "pipe-like" line between points
-            \addplot3[
-                no marks,
-                thick, 
-                line width=2mm, % Making the line thicker to simulate a pipe
-                color=gray!60, % Choosing a color that stands out with some 3D appearance
-                -latex % Adding an arrow tip for direction, optional
-            ] coordinates {(2,3,5) (3,2,6)};
-
-            % Optionally, label points
-            \node at (axis cs:2,3,5) [left] {Point A};
-            \node at (axis cs:3,2,6) [right] {Point B};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Connecting a point to its nearest neighbor in 3D space with a pipe-like appearance.}
-\end{figure}
-
+\begin{lstlisting}[language=cpp,caption={Caption}]
+void XMLDetDecConfigReader::handleDescriptors(DetectorDescriptorConfigContainer* configContainer, TiXmlNode* descriptorsNode);
+leftColor.addCalibrationPoint()...
+\end{lstlisting}
 \end{document}

@@ -3,15 +3,13 @@
 
 \begin{document}
 
-\begin{figure}
-\centering
-
-\begin{subfigure}{0.9\textwidth}
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title = {Speed Percent ($\% \cdot 100$) vs Speed (cm/s)}
         width=\textwidth, % Make the plot as wide as the subfigure
-        height=0.6\textwidth, % Adjust the height for a wide format
+        height=0.5\textwidth, % Adjust the height for a wide format
         xlabel={Speed (cm/s)},
         ylabel={Speed Percent ($\% \cdot 100$)},
         legend pos=north west,
@@ -27,16 +25,18 @@
     \end{axis}
 \end{tikzpicture}
 \label{speed-calibration-data}
-\end{subfigure}
+\caption{Motor Calibration Data Regarding Speed Percent}
+\end{figure}
 
 \vspace{0.5cm} % Space between the subfigures
 
-\begin{subfigure}{0.9\textwidth}
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
     \begin{axis}[
+        title = {PWM Percent ($\% \cdot 100$) vs Speed (cm/s)}
         width=\textwidth, % Make the plot as wide as the subfigure
-        height=0.6\textwidth, % Adjust the height for a wide format
+        height=0.5\textwidth, % Adjust the height for a wide format
         xlabel={Speed (cm/s)},
         ylabel={PWM Percent ($\% \cdot 100$)},
         ymin = -10,
@@ -52,10 +52,7 @@
     \end{axis}
 \end{tikzpicture}
 \label{pwm-calibration-data}
-\end{subfigure}
-
-\caption{Motor Calibrations}
-\label{fig:motor-calibration}
+\caption{Motor Calibration Data Regarding PWM Percent}
 \end{figure}
 
 \end{document}

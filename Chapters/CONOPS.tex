@@ -1,18 +1,17 @@
-\documentclass{article}
+\documentclass{report}
 \usepackage{StyleSheet}
 \begin{document}
 
-
-\section{CONOPs (Concept of Operations)}
-\subsection{Initialization of the System}
+\chapter{CONOPs (Concept of Operations)}\label{ch:conops}
+\section{Initialization of the System}
 \begin{itemize}
-    \item Firstly, the ABHS will be placed down on a flat surface, preferably the floor as it takes away the risk of the vehicle falling from a dangerous height.
-    \item If the use of the ABHS is to fulfill one of its requirements (Obstacle Avoidance, Pickup and Place System with Line Following), then the ABHS should be placed in its starting position.
+    \item Firstly, the \gls{ABHS} will be placed down on a flat surface, preferably the floor as it takes away the risk of the vehicle falling from a dangerous height.
+    \item If the use of the \gls{ABHS} is to fulfill one of its requirements (Obstacle Avoidance, Pickup and Place System with Line Following), then the \gls{ABHS} should be placed in its starting position.
     \item All the connections should be secure and in accordance with the pin map provided with the vehicle.
     \item The battery should at this point be connected and switched on, with the green lights appearing when the battery is on.
 \end{itemize}
 
-\subsection{Standard Operating Modes}
+\section{Standard Operating Modes}
 \begin{itemize}
 \item This system has 2 normal operating modes for which it was designed for:
     \begin{itemize}
@@ -20,30 +19,30 @@
         \item This system was designed to pick up a box and recognize its color. It will then use this color to transport the box over a line of the same color, and place it in its finishing point. It will then return to its starting position. 
 \end{itemize}
 \end{itemize}
-\subsection {External Environment for use of the System}
+\section {External Environment for use of the System}
 \begin{itemize}
-    \item This system should typically be used in a room temperature, dry environment. This is due to the open wire nature of the ABHS, and its design being built at and for inside use.
+    \item This system should typically be used in a room temperature, dry environment. This is due to the open wire nature of the \gls{ABHS}, and its design being built at and for inside use.
 \end{itemize}
-\subsection{Standard Maintenance}
+\section{Standard Maintenance}
 \begin{itemize}
-    \item The battery for the ABHS should always be charged in order for this system to work.
+    \item The battery for the \gls{ABHS} should always be charged in order for this system to work.
     \item All wires should be maintained in the correct pin ports. If a wire is in the incorrect port, follow the pin map as provided.
     \item The vehicle should be kept in dry, stable conditions, and out of direct sunlight as to avoid potential damage to parts.
 \end{itemize}
-\subsection{Failure Modes due to Internal Problems}
+\section{Failure Modes due to Internal Problems}
 \begin{itemize}
     \item In the event of the user at any point seeing or smelling smoke coming from the vehicle, shut the battery off as soon as possible. 
-    \item In the case of these events, troubleshoot the system to decipher what the problem point was. Start by seeing if any parts of the system are hot, specifically motors, the Teensy microcontroller, and the Buck Converter. If any signs of overheating occur, immediately disconnect the part for further inspection.
+    \item In the case of these events, troubleshoot the system to decipher what the problem point was. Start by seeing if any parts of the system are hot, specifically motors, the Teensy 4.1 microcontroller, and the buck converter. If any signs of overheating occur, immediately disconnect the part for further inspection.
     \item Test the possibly damaged part to see if it functions correctly, if not, throw the part away.
 \end{itemize}
-\subsection{Reaction to External Failure Modes}
+\section{Reaction to External Failure Modes}
 \begin{itemize}
     \item If on the obstacle course the vehicle drives into one of the walls, it should find its own way around it. No interaction is necessary. 
     \item If on the obstacle avoidance, the vehicle drives off the course (ie. over the white line), immediately switch the battery off to avoid the vehicle running too far off course or crashing into something and damaging it.
     \item If during box pickup the vehicle drops the box, reset the course and try to run the system again. If this fails again, check to ensure that the gear teeth of the gripper are properly connected.
     \item If the vehicle fails to follow the line and veers off the path, turn off the battery and reset the course. 
 \end{itemize}
-\subsection{Shutdown of the System}
+\section{Shutdown of the System}
 \begin{itemize}
     \item Make sure the vehicle has fully run the course of its current objective. Turn the battery off and ensure that the system is fully off.
 \end{itemize}
