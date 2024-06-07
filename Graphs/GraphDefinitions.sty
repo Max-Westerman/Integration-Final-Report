@@ -1,0 +1,27 @@
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{pgffor}
+\usepackage{ifthen}
+\usepackage{standalone}
+\usepackage{subcaption}
+\usepackage{float}
+
+% lowercase_color, column_name
+\newcommand{\IRTrace}[3]{
+    \addplot[only marks, color=#1, mark=*, mark options={scale=1.5, draw=#3}] table [
+        x=Sensor,
+        y=#2,
+        col sep=comma
+    ] {code/output_data/ir_array_calibration/sensor_calibration_data.csv};
+}
+
+% motor name, column name, legend, color, linetype
+\newcommand{\MotorTrace}[5]{
+    \addplot[mark=*, mark options={scale=1}, color=#4, thick, #5] table [
+        x=speed,
+        y=#2,
+        col sep=comma
+    ] {code/output_data/motor_calibration/#1_calibration_data.csv};
+    \addlegendentry{#3}
+}

@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage{GraphDefinitions}
+
+\begin{document}
+
+\foreach \sensor in {middleColor, rightColor, leftColor, gripperColor} {
+    \ifthenelse{\equal{\sensor}{middleColor}}{ % Middle color shadow opacity
+        \def\opacity{0.010}
+    }{
+        \def\opacity{0.055} % Non middle color shadow opacity
+    }
+    \def\ballsize{3pt} % Change the size of the balls
+                
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                xlabel={Red Frequency},
+                ylabel={Green Frequency},
+                zlabel={Blue Frequency},
+                xlabel style={sloped like x axis}, % Make x label follow the x axis
+                ylabel style={sloped like y axis}, % Make y label follow the y axis
+                zlabel style={sloped}, % Make z label follow the z axis or make it vertical
+                legend pos=north west,
+                grid=both,
+                grid style={line width=.1pt, draw=gray!10},
+                major grid style={line width=.2pt,draw=gray!50},
+                minor tick num=5,
+                width=0.8\textwidth,
+                height=0.65\textwidth,
+                view={45}{45}, % Adjust the view angle for better visualization
+            ]
+            \IfFileExists{code/output_data/color_sensor_calibration/\sensor.csv}{
+                % Determine opacity based on sensor
+
+                \addplot3[
+                    only marks,
+                    scatter,
+                    scatter/classes={
+                        RED={mark=ball,ball color= red, draw opacity=0, mark size = \ballsize},
+                        BLUE={mark=ball,ball color= blue, draw opacity=0, mark size = \ballsize},
+                        GREEN={mark=ball,ball color= green, draw opacity=0, mark size = \ballsize},
+                        WHITE={mark=ball,ball color= white, draw opacity=0, mark size = \ballsize},
+                        BLACK={mark=ball,ball color= black, draw opacity=0, mark size = \ballsize},
+                        YELLOW={mark=ball,ball color= yellow, draw opacity=0, mark size = \ballsize}
+                    },
+                    scatter src=explicit symbolic,
+                ] table[
+                    x=Red_Freq,
+                    y=Green_Freq,
+                    z=Blue_Freq,
+                    meta = Color,
+                    col sep=comma,
+                ] {code/output_data/color_sensor_calibration/\sensor.csv};
+
+                % Wall histogram on the left
+                \addplot3[
+                    only marks,
+                    scatter,
+                    scatter/classes={
+                        RED={mark=*,fill=red, fill opacity=\opacity, draw opacity=0},
+                        BLUE={mark=*,fill=blue, fill opacity=\opacity, draw opacity=0},
+                        GREEN={mark=*,fill=green, fill opacity=\opacity, draw opacity=0},
+                        WHITE={mark=*,fill=gray, fill opacity=\opacity, draw opacity=0},
+                        BLACK={mark=*,fill=black, fill opacity=\opacity, draw opacity=0},
+                        YELLOW={mark=*,fill=yellow, fill opacity=\opacity, draw opacity=0}
+                    },
+                    scatter src=explicit symbolic,
+                ] table[
+                    x expr = 0,  % This sets the x-coordinate to 0
+                    y = Green_Freq,  % This sets the y-coordinate to 0
+                    z= Blue_Freq,
+                    meta = Color,
+                    col sep=comma,
+                ] {code/output_data/color_sensor_calibration/\sensor.csv};
+
+                % Wall histogram on the right
+                \addplot3[
+                    only marks,
+                    scatter,
+                    scatter/classes={
+                        RED={mark=*,fill=red, fill opacity=\opacity, draw opacity=0},
+                        BLUE={mark=*,fill=blue, fill opacity=\opacity, draw opacity=0},
+                        GREEN={mark=*,fill=green, fill opacity=\opacity, draw opacity=0},
+                        WHITE={mark=*,fill=gray, fill opacity=\opacity, draw opacity=0},
+                        BLACK={mark=*,fill=black, fill opacity=\opacity, draw opacity=0},
+                        YELLOW={mark=*,fill=yellow, fill opacity=\opacity, draw opacity=0}
+                    },
+                    scatter src=explicit symbolic,
+                ] table[
+                    x = Red_Freq,  % This sets the x-coordinate to 0
+                    y expr = 750,  % This sets the y-coordinate to the back wall
+                    z= Blue_Freq,
+                    meta = Color,
+                    col sep=comma,
+                ] {code/output_data/color_sensor_calibration/\sensor.csv};
+
+                % Floor histogram
+                \addplot3[
+                    only marks,
+                    scatter,
+                    scatter/classes={
+                        RED={mark=*,fill=red, fill opacity=\opacity, draw opacity=0},
+                        BLUE={mark=*,fill=blue, fill opacity=\opacity, draw opacity=0},
+                        GREEN={mark=*,fill=green, fill opacity=\opacity, draw opacity=0},
+                        WHITE={mark=*,fill=gray, fill opacity=\opacity, draw opacity=0},
+                        BLACK={mark=*,fill=black, fill opacity=\opacity, draw opacity=0},
+                        YELLOW={mark=*,fill=yellow, fill opacity=\opacity, draw opacity=0}
+                    },
+                    scatter src=explicit symbolic,
+                ] table[
+                    x = Red_Freq,
+                    y = Green_Freq,
+                    z expr = 0,
+                    meta = Color,
+                    col sep=comma,
+                ] {code/output_data/color_sensor_calibration/\sensor.csv};
+
+                
+            }{}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{\sensor \ Sensor Calibration Data in Euclidean Space.}
+        \label{fig:\sensor_calibration_data}
+    \end{figure}
+}
+
+\end{document}

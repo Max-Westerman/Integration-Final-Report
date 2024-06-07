@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{StyleSheet}
+\begin{document}
+
+
+\section{System Requirements}
+The overall objective of the system our team has built involves numerous requirements that helped us achieve our objectives. One of the main goals will be for the vehicle to complete the obstacle course in a timely fashion that avoids walls and does not pass specific colored tape. The other main goal will be for the obstacle to pick up a specific colored box, and then follow a particular line of color of the box to a drop-off site, where the vehicle will place the box back down.\vspace{1em}\newline
+
+\noindent\textbf{\Large Box Pick-up and Placement System}
+
+\subsection{Recognition of the I-Beam}
+The vehicle shall find the I-Beam on the course.
+
+\subsection{Orientation of the I-Beam}
+The vehicle shall orientate/center itself with the I-Beam
+
+\subsection{Apprehend the Box}
+The vehicle shall apprehend the box with the gripper.
+
+\subsection{Identify the Color of the Box}
+The vehicle shall identify the color of the box.
+
+\subsection{Identify the Size of the Box}
+The vehicle shall identify the size of the box. 
+
+\subsection{Realign with the Line Following Course}
+The vehicle shall move itself back onto the line following the course after it has apprehended the box.
+
+\subsection{Follow the Line of the Color of the Box and Return.} 
+The vehicle shall follow the colored line of the box’s color it has apprehended.
+
+\subsection{Placement of the Box}
+The vehicle shall place the box on the appropriate I-Beam based on the color and size of the box.\vspace{2em}\newline
+
+\noindent\textbf{\Large The Drive Train (i.e. Wheel Configuration) and Steering System}
+
+\subsection{Move Forward}
+The vehicle shall move forward in a straight line.
+
+\subsection{Move Backward}
+The vehicle shall move backward in a straight line.
+
+\subsection{Move Right}
+The vehicle shall move right in a straight line.
+
+\subsection{Move Left}
+The vehicle shall move left in a straight line.
+
+\subsection{Rotational Movement}
+The vehicle shall rotate to the right or left.\vspace{2em}\newline
+
+\noindent\textbf{\Large Sensor Requirement: IR Sensor Array}
+
+\subsection{Width of the IR Sensors}
+The width of the IR Array shall be bigger than the width of the tape.
+
+\subsection{The number of sensors is greater than 6}
+The amount of sensors on the IR Array is greater than 6.
+
+\subsection{It Must Detect and Distinguish the Tape and Tarp}
+The IR Array must be able to distinguish between the colored tape and the black tarp.
+
+\subsubsection{It Must be able to Calculate Error}
+The IR Array must be able to calculate the error to recognize which way the vehicle is deviating.
+
+\subsection{Deviation Adjustment}
+The vehicle shall properly correct the vehicle if it deviates from the red, blue, or green line.\vspace{+3em}\newline
+
+\noindent\textbf{\Large Task-2 Completion Times (Obstacle Course)}
+\subsection{Detection of Walls }
+The vehicle shall detect the walls of the obstacle course via ultrasonic sensors
+\subsection{Avoidance of Walls}
+The vehicle shall move forward and avoid the walls of the obstacle course by the system not touching any part of the wall. 
+
+\subsection{Detection of Side Boundaries of Obstacle Course via Color Sensors}
+The vehicle shall have color sensors that will identify when the system is at the side boundaries of the course. For this specific test, the side boundary is outlined by white tape.
+
+\subsection{Stay within the Obstacle Course Until Course is Complete}
+The vehicle’s center of mass shall not deviate outside the side boundary and stay within the obstacle course until completion. 
+
+\subsection{Detection of the Finish Line of Obstacle Course via Color Sensors}
+The vehicle shall have color sensors that will identify when the system is at the side boundaries of the course. For this specific test, the side boundary is outlined by white tape.
+
+\subsection{System Stops at the End of the Course}
+The vehicle shall detect the green line and fully cross the line, and then stop. 
+
+
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{GraphDefinitions}
+
+\begin{document}
+
+\begin{figure}
+\centering
+
+\begin{subfigure}{0.9\textwidth}
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        width=\textwidth, % Make the plot as wide as the subfigure
+        height=0.6\textwidth, % Adjust the height for a wide format
+        xlabel={Speed (cm/s)},
+        ylabel={Speed Percent ($\% \cdot 100$)},
+        legend pos=north west,
+        ymin = -10,
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        ]
+        \MotorTrace{left}{speed_percent}{Left Speed Percent}{red}{solid}        
+        \MotorTrace{right}{speed_percent}{Right Speed Percent}{green}{solid}
+        \MotorTrace{top}{speed_percent}{Top Speed Percent}{blue}{solid}
+        \MotorTrace{bottom}{speed_percent}{Bottom Speed Percent}{black}{solid}
+    \end{axis}
+\end{tikzpicture}
+\label{speed-calibration-data}
+\end{subfigure}
+
+\vspace{0.5cm} % Space between the subfigures
+
+\begin{subfigure}{0.9\textwidth}
+\centering
+\begin{tikzpicture}
+    \begin{axis}[
+        width=\textwidth, % Make the plot as wide as the subfigure
+        height=0.6\textwidth, % Adjust the height for a wide format
+        xlabel={Speed (cm/s)},
+        ylabel={PWM Percent ($\% \cdot 100$)},
+        ymin = -10,
+        legend pos=north west,
+        grid=both,
+        grid style={line width=.1pt, draw=gray!10},
+        major grid style={line width=.2pt,draw=gray!50},
+        ]
+        \MotorTrace{left}{pwm_percent}{Left PWM Percent}{red}{solid}        
+        \MotorTrace{right}{pwm_percent}{Right PWM Percent}{green}{solid}
+        \MotorTrace{top}{pwm_percent}{Top PWM Percent}{blue}{solid}
+        \MotorTrace{bottom}{pwm_percent}{Bottom PWM Percent}{black}{solid}
+    \end{axis}
+\end{tikzpicture}
+\label{pwm-calibration-data}
+\end{subfigure}
+
+\caption{Motor Calibrations}
+\label{fig:motor-calibration}
+\end{figure}
+
+\end{document}

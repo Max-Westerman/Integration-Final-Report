@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage{StyleSheet}
+\usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=Graphs/tikz/]
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \Huge \textbf{\TITLENAME}
+    
+    \vspace{1cm}
+    
+    \Large \NAMES
+    
+    \vspace{0.5cm}
+    
+    \large \SCHOOLNAME
+    
+    \vfill
+    
+    \today
+    
+\end{titlepage}
+
+% ---------- %
+
+\renewcommand{\contentsname}{Contents}
+\tableofcontents
+\newpage
+
+% ---- Preamble End ---- %
+
+\section{Introduction}
+Our project is about a vehicle (also referred to as a system) that has the ability to complete an obstacle course test as well as a pickup and placement test in a multitude of ways. On the obstacle course that is outline by white lines on the side and green tape on the front and back end, our vehicle will be able to stay within the white lines and detect the walls within the course, maneuver around them and stop on the green line at the end of the course. For the pickup and placement course our vehicle will be able to detect an I-Beam, pick up a colored box and based on its color and size, drop the box off on the other end of the course and return to starting side of the court. Completing these test requires communication skills, an array of engineering skills such as computer and electrical skills, writing skills, and decision making skills. The intention of the project is to strengthen all of the required skills needed to solve a complex problem that meets the demand being asked. 
+
+The purpose of the report is to detail the process of creating a system that will meet all requirements. The report was also a great way to get the team’s ideas flushed out and catch mistakes within our project that we could then correct. Section 2, the Project Management Plan keeps is a timeline of the system’s progress by giving weekly updates that include the team member(s) who is responsible for the task and the duration of the task. Another key part of the report is Section 3. In this part of the report, the system requirements for certain objectives such as the obstacle avoidance and pickup and placement of the vehicle are established. Other major sections of our report is section 5 and section 7. Section 5 outlines the conceptual designs that the team came up and section 7 details the design of the system which includes algorithms and other electrical and computer engineering tools that were used in the project. Lastly, section 8 goes into depth about the System Test and Verifications also known as T.E.M.P.S.
+In this section, an explanation of how each system requirement is tested is provided. 
+\input{Sections/Project Management Plan}
+\input{Sections/System Requirements}
+\input{Sections/CONOPS}
+
+\section{Conceptual Design}
+\section{System Risk Management}
+\section{Detailed Design}
+\section{System Test and Verification}
+\section{System Analysis and System Performance Metrics}
+\section{Summary}
+\section{Documentation and Acknowledgments}
+\newpage
+\section{References}
+
+\newpage
+\section{Appendix}
+
+\subsection{Calibration Data}
+
+\subsubsection{Color Sensor Calibration Points}
+\input{Graphs/Color Sensor Calibration Graph}
+
+\subsubsection{IR Array Calibration Points}
+\input{Graphs/IR Array Calibration Graph}
+
+\subsubsection{Motor Calibration Points}
+\input{Graphs/Motor Calibration Graph}
+
+\subsection{Color Sensor Euclidean Distance Visualization}
+\input{Graphs/ColorCalibrationDistance}
+
+%\input{Sections/Code}
+
+\end{document}
