@@ -1,34 +1,48 @@
+/**
+ * @file PickupPlace.h
+ * @brief Header file for the PickupPlace class, handling object manipulation following a line navigation system.
+ *
+ * This file defines the PickupPlace class, which is responsible for picking up an object,
+ * following a path to transport it, and placing the object according to its properties.
+ * It uses line following, object detection, and precise movement to perform these tasks.
+ */
+
 #ifndef PICKUP_PLACE_H
-#define PICKUP_ PLACE_ H
-// =====================
+#define PICKUP_PLACE_H
 
 #include <Arduino.h>
-#include "Initialization.h"   // sensors and control and such
-#include "BoxControl.h"       // box class
-#include "LineFollowing.h"    // irFollower class, centerLine func, centerOnLine func
-#include "Motion.h"           // bot class
+#include "Initialization.h"   // Initialization of sensors and controls
+#include "BoxControl.h"       // Controls for the object manipulation
+#include "LineFollowing.h"    // Line following functionalities
+#include "Motion.h"           // Basic motion control
 
+/**
+ * @class PickupPlace
+ * @brief Manages the sequence of operations for picking up and placing objects, utilizing sensor input and motor output.
+ *
+ * The PickupPlace class orchestrates a complex sequence of actions involving navigation to an object,
+ * acquiring it, navigating along a designated path, and placing the object based on detected characteristics.
+ * It interacts with a variety of sensors and actuators to achieve precise and reliable operation.
+ */
 class PickupPlace {
-  /*
-  Completes the pickup and place objective.
-  Takes a box from a platform, follows a randomly 'twisting' colored line, then places it on another platform depending on the box's color and size.
-  PickupPlace.run() runs the entire test.
-  */
+public:
+  float background_distance = 45;           ///< Maximum range for Ultrasonic sensors to consider.
+  float i_beam_approach_distance = 15;      ///< Target distance from the pickup or placement platform for stopping.
+  float i_beam_approach_speed = 70;         ///< Speed to approach the platforms.
+  float starting_line_catch_speed = 80;     ///< Initial speed to locate the starting line.
+  int window_size = 4;                      ///< Moving average window size for sensor readings.
 
-  public:
-  float background_distance = 45;           // Distance at which to ignore Ultrasonic sensors as it's outside of range
-  float i_beam_approach_distance = 15;      // How close the bot should get to the pickup / place platform
-  float i_beam_approach_speed = 70;         // Speed at which to approach the I beam.
-  float starting_line_catch_speed = 80;     // Speed to back up to the starting green line
-  int window_size = 4;
+  float following_speed = 70;               ///< Standard speed for following lines.
+  float horizontal_centering_speed = 70;    ///< Speed for horizontal adjustments to center on platforms.
 
-  float following_speed = 70;               // Base speed of the middle section line following
-  float horizontal_centering_speed = 70;   // Speed at which the robot moves left & right to center on the platform
-  
-  // Create quick and slow ir followers
-  IRLineFollower quickFollower;
-  IRLineFollower carefulFollower;
+  IRLineFollower quickFollower;             ///< Configured for faster, less precise line following.
+  IRLineFollower carefulFollower;           ///< Configured for more careful, precise line following.
+
+  /**
+   * @brief Constructs and configures two types of line followers: quick and careful.
+   */
   PickupPlace() {
+    // Configuration of line followers with different PID settings for different line following behaviors
     quickFollower.kp = 100;
     quickFollower.ki = 0;
     quickFollower.kd = 29;
@@ -48,6 +62,11 @@ class PickupPlace {
     carefulFollower.reverse_wheels = true;
   }
 
+  /**
+   * @brief Moves the robot towards the platform until it reaches the specified i_beam_approach_distance.
+   * 
+   * Uses ultrasonic sensors to measure distance to the platform and moves forward until the distance is less than the threshold.
+   */
   void approachPlatform(){
     Serial.println("== Approaching Platform ==");
     // While the left sonic distance is greater than the trigger, keep moving forwards.
@@ -57,6 +76,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Aligns the robot on the initial green line based on detected box color.
+   * 
+   * Moves backwards until a green line is detected and then centers on the line based on the box's color.
+   */
   void orientOnGreenLine(){
     Serial.println("== Orienting on the green line ==");
 
@@ -77,6 +101,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Navigates to the color-coded line associated with the box from the starting position.
+   * 
+   * Moves forward from the green line and switches to the color line specific to the box's attributes.
+   */
   void goToStartingLine() {
     Serial.println("== Going to Starting Line ==");
     leftColor.moving_average_window = 25;
@@ -102,6 +131,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Orients the robot parallel to the starting line for following.
+   * 
+   * After reaching the line, adjusts the robot to align perfectly with it for precise line following.
+   */
   void orientOnStartingLine() {
     /*
     Our robot is now perpendicular to the starting line, and we want to become centered upon it.
@@ -124,6 +158,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Follows the colored line using a line follower until a termination (green) line is encountered.
+   * 
+   * Continuously follows the line at a set speed and checks for the green line that indicates the end of the path.
+   */
   void followUntilGreen(){
     Serial.println("== Following until the green line =");
     rightColor.moving_average_window = window_size; // change our moving window to smaller as we're moving faster.
@@ -139,6 +178,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Manages navigation at a fork, directing the robot based on the box size.
+   * 
+   * Depending on the box's size, chooses a direction at a fork in the line and follows it to the designated drop-off point.
+   */
   void navigateFork(){
     /*
     We're now on the green trigger line after the main line following portion of the test. There's a fork indicating we go left or right based on the box size.
@@ -168,6 +212,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Centers the robot on the final part of the path after navigating through the fork.
+   * 
+   * Ensures the robot is aligned with the final segment of the line for accurate placement of the object.
+   */
   void orientOnFinalLine(){
     /*
     We're now slightly above the horizontal portion of the final fork. We want to move left or right depending on the size of the box.
@@ -204,6 +253,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Approaches the final platform, stopping within a precise distance for object placement.
+   * 
+   * Uses careful navigation to approach the platform and prepares for object placement by aligning with the platform edge.
+   */
   void approachEndPlatform(){
     Serial.println("== Approaching the last platform ==");
     /*
@@ -218,6 +272,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Returns to the main green line after placing the object.
+   * 
+   * Navigates back to the green line, preparing for potential additional tasks or to conclude the operation.
+   */
   void returnToGreen(){
     middleColor.moving_average_window = 25;
 
@@ -234,6 +293,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Returns to the fork in the line to continue navigation or repeat the process.
+   * 
+   * Re-navigates to a critical decision point in the path to either continue further tasks or to reattempt alignment.
+   */
   void returnToFork(){
     Serial.println("== Going back to the fork ==");
     /*
@@ -277,6 +341,11 @@ class PickupPlace {
     bot.stopMotion();
   }
 
+  /**
+   * @brief Executes the full sequence of picking up and placing an object.
+   * 
+   * Orchestrates the entire process from initial approach to final placement, including all necessary adjustments and alignments.
+   */
   void run(){
     Serial.println("| ==== Running Pickup & Place ==== |"); 
     // Runs all of the functions in order
@@ -307,7 +376,7 @@ class PickupPlace {
 
 };
 
-// Instantiate the class so other files can touch it
+// External instantiation of the PickupPlace class for use in other files.
 PickupPlace pickupPlace;
 
-#endif
+#endif // PICKUP_PLACE_H

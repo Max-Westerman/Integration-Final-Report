@@ -1,118 +1,143 @@
+/**
+ * @file BoxControl.h
+ * @brief Defines the Box class for operations related to handling different sizes and colors of boxes.
+ *
+ * This file contains the definition of the Box class, which is used to control the operations
+ * related to picking up, identifying, and placing boxes based on size and color using a robotic arm
+ * in an automated system. Methods within this class manage the complete lifecycle of box handling
+ * from reaching for the box to placing it at a designated location.
+ *
+ * Created by: [Your Name]
+ * Date: [Creation Date]
+ *
+ * Modifications:
+ * Date: [Modification Date] [Description of modification]
+ */
+
 #ifndef BOX_CONTROL_H
 #define BOX_CONTROL_H
-// =====================
 
 #include "Initialization.h"
 
-// enum for box sizes
+/**
+ * @enum BoxSize
+ * @brief Enumeration to represent the size of the box.
+ */
 enum BoxSize {
   LARGE,
   SMALL,
 };
 
-// Class for box operations & attributes
+/**
+ * @class Box
+ * @brief Class to handle operations and attributes for box operations.
+ *
+ * The Box class encapsulates methods for manipulating boxes using a robotic arm, including
+ * reaching for, grabbing, and placing boxes. It also determines the size and color of the box
+ * during the operation.
+ */
 class Box {
-  public:  
-  BoxSize size = SMALL;         // Box size. Initialized for testing individual methods.
-  Color color = RED;           // Box color.  Initialized for testing individual methods.
-  unsigned long elapsedTime;    // Time taken during the grab operation
-  
-  float GRAB_SPEED = 80;        // Speed for grabbing the box
-  float RELEASE_SPEED = 80;
-  float ARM_SPEED = 80;         // How fast the arm moves up and down for major motions 
-  float LARGE_BOX_TIME = 700;   // Time threshold to differentiate between large and small boxes
+  public:
+    BoxSize size = SMALL;         ///< Default size for testing individual methods.
+    Color color = RED;            ///< Default color for testing individual methods.
+    unsigned long elapsedTime;    ///< Time taken during the grab operation.
 
-  // Method to initiate reaching for the box
-  void _reachFor(){
-    Serial.println("= Reaching for box =");
-    // Open the gripper fully at full speed before putting the arm down.
-    gripper.speed = 100;
-    gripper.move(100);
-    // Slow down the arm and move the arm to horizontal.
-    arm.speed = 50;
-    arm.move(100);
-  }
+    float GRAB_SPEED = 80;        ///< Speed for grabbing the box.
+    float RELEASE_SPEED = 80;     ///< Speed for releasing the box.
+    float ARM_SPEED = 80;         ///< Speed for major arm motions.
+    float LARGE_BOX_TIME = 700;   ///< Time threshold to differentiate between large and small boxes.
 
-  void _grab(){
-    Serial.println("= Grabbing box =");
-    // Verifying the gripper is fully open.
-    gripper.speed= 100;
-    gripper.move(100);
-    gripper.speed = 80;
-
-    unsigned long startTime = millis();     // Start the timer to sense box size
-    float angle = gripper.current_angle;    // Check angle so we can increment
-    gripper.speed = GRAB_SPEED;
-
-    // Slowly move the gripper closer together until the button is pressed
-    while (!button.getState()){
-      angle -= 0.1;         // Reduce the angle, closing the griper
-      gripper.move(angle);  // Move to the new angle 
-      if (0 >= angle) {
-        break; // Makes sure the servo doesn't strip. Exits loop at min angle.
-      }
-    };
-
-    // Compute the time taken to close the gripper
-    unsigned long endTime = millis();
-    elapsedTime = endTime-startTime;
-    Serial.println(elapsedTime);
-  }
-
-  void _getSize(){
-    // Using the time to grab the box, get the size of the box.
-    Serial.println("= Getting box size =");
-    if (elapsedTime < LARGE_BOX_TIME) {
-      Serial.println("Box Size: Large Box");
-      size = LARGE; // Box.size
-    } else {
-      Serial.println("Box Size: Small Box");
-      size = SMALL; // Box.size
+    /**
+     * @brief Method to initiate reaching for the box.
+     */
+    void _reachFor() {
+      Serial.println("= Reaching for box =");
+      gripper.speed = 100;
+      gripper.move(100);
+      arm.speed = 50;
+      arm.move(100);
     }
-  }
 
-  void _getColor(){
-    // Using the gripper color sensor, retrieve the color of the box.
-    Serial.println("= Getting box color =");
-    color = gripperColor.getColor(); // Box.color
-    Serial.print("Box Color: ");
-    Serial.println(gripperColor.color);
-  }
+    /**
+     * @brief Method to grab the box.
+     */
+    void _grab() {
+      Serial.println("= Grabbing box =");
+      gripper.speed = 100;
+      gripper.move(100);
+      gripper.speed = GRAB_SPEED;
 
-  void _pickup(){
-    Serial.println("= Elevating the box =");
-    arm.speed = 100;
-    arm.move(80);
-  }
+      unsigned long startTime = millis(); // Start the timer to sense box size
+      float angle = gripper.current_angle; // Check angle to increment
+      while (!button.getState()) {
+        angle -= 0.1; // Reduce the angle, closing the gripper
+        gripper.move(angle);
+        if (0 >= angle) {
+          break; // Avoid servo damage
+        }
+      }
 
-  void procure(){
-    // Run through the sub methods on getting the box.
-    Serial.println("== Procuring Box ==");
-    _reachFor();
-    _grab();
-    _getColor();
-    _getSize();
-    _pickup();
-  }
+      unsigned long endTime = millis();
+      elapsedTime = endTime - startTime;
+      Serial.println(elapsedTime);
+    }
 
-  void place(){
-    Serial.println("== Placing the box ==");
-    // Set the arm back to horizontal
-    arm.speed = ARM_SPEED;
-    arm.move(95);
+    /**
+     * @brief Method to determine the size of the box based on grip time.
+     */
+    void _getSize() {
+      Serial.println("= Getting box size =");
+      size = elapsedTime < LARGE_BOX_TIME ? LARGE : SMALL;
+      Serial.println(size == LARGE ? "Box Size: Large Box" : "Box Size: Small Box");
+    }
 
-    // Release the box
-    gripper.speed = RELEASE_SPEED;
-    gripper.move(100);
-    delay(100);   // Wait slightly so box doesn't stick to gripper
+    /**
+     * @brief Method to determine the color of the box using a sensor on the gripper.
+     */
+    void _getColor() {
+      Serial.println("= Getting box color =");
+      color = gripperColor.getColor();
+      Serial.print("Box Color: ");
+      Serial.println(gripperColor.color);
+    }
 
-    // Bring the arm back up, quickly, to vertical. Congrats, task completed!
-    arm.speed = 100;
-    arm.move(0);
-    delay(100);   // Wait slightly so box doesn't stick to gripper
-  }
+    /**
+     * @brief Method to elevate the box after grabbing.
+     */
+    void _pickup() {
+      Serial.println("= Elevating the box =");
+      arm.speed = 100;
+      arm.move(80);
+    }
+
+    /**
+     * @brief Public method to execute the full procedure of procuring the box.
+     */
+    void procure() {
+      Serial.println("== Procuring Box ==");
+      _reachFor();
+      _grab();
+      _getColor();
+      _getSize();
+      _pickup();
+    }
+
+    /**
+     * @brief Public method to place the box at the designated location.
+     */
+    void place() {
+      Serial.println("== Placing the box ==");
+      arm.speed = ARM_SPEED;
+      arm.move(95);
+      gripper.speed = RELEASE_SPEED;
+      gripper.move(100);
+      delay(100);
+      arm.speed = 100;
+      arm.move(0);
+      delay(100);
+    }
 };
 
-Box box;
+Box box; ///< Global instance of Box, available for immediate use.
 
-#endif
+#endif // BOX_CONTROL_H

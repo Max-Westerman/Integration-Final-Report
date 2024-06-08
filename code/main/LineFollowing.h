@@ -1,6 +1,14 @@
+/**
+ * @file LineFollowing.h
+ * @brief This file contains the IRLineFollower class to handle line following using IR sensors.
+ *
+ * This class manages the behavior of a robot equipped with infrared (IR) sensors for following
+ * a line on the ground. It includes methods for initializing the robot, processing sensor data,
+ * and controlling the motors based on computed errors using a PID controller.
+ */
+
 #ifndef LINEFOLLOWING_H
 #define LINEFOLLOWING_H
-// =====================
 
 #include "Initialization.h"
 #include "Motion.h"
@@ -10,27 +18,31 @@
 
 class IRLineFollower {
 public:
-  const float MAX_SPEED = 100;
-  const float max_threshold = 1;
-  const float min_threshold = 0.55;
+  const float MAX_SPEED = 100; ///< Maximum speed of the robot.
+  const float max_threshold = 1; ///< Upper threshold for error handling.
+  const float min_threshold = 0.55; ///< Lower threshold for error handling.
 
-  bool if_catch_lines = true;
-  bool reverse_wheels = true;
-  Color follow_color;
-  float error;
-  float pid_output;
-  percent base_speed;
-  percent turn_pwm;
-  float turn_delay;
-  float kp;
-  float ki;
-  float kd;
+  bool if_catch_lines = true; ///< Flag to determine if the robot should try to catch the line if lost.
+  bool reverse_wheels = true; ///< Flag to enable wheel reversal for turning maneuvers.
+  Color follow_color; ///< Color of the line being followed.
+  float error; ///< Current error value calculated by sensors.
+  float pid_output; ///< Output value from the PID controller.
+  percent base_speed; ///< Base speed for the robot's movement.
+  percent turn_pwm; ///< PWM value for turn operations.
+  float turn_delay; ///< Delay in seconds to apply after a turn.
+  float kp, ki, kd; ///< PID coefficients for proportional, integral, and derivative terms.
 
-  percent left_speed, right_speed, top_speed, bottom_speed;
-  percent left_pwm, right_pwm, top_pwm, bottom_pwm;
-  MoveType left_direction, right_direction, top_direction, bottom_direction;
+  percent left_speed, right_speed;
+  percent top_speed, bottom_speed; ///< Speed settings for each motor.
+  percent left_pwm, right_pwm;
+  percent top_pwm, bottom_pwm; ///< PWM settings for each motor.
+  MoveType left_direction, right_direction;
+  MoveType top_direction, bottom_direction; ///< Direction control for each motor.
 
-  // Main function to follow the IR line
+  /**
+   * @brief Follows a colored line specified by the parameter.
+   * @param followed_color Color of the line to follow.
+   */
   void follow(Color followed_color) {
     follow_color = followed_color;
 
@@ -56,9 +68,11 @@ public:
     drives();
   }
 
-private:
+  private:
 
-  // Function to handle line catching and turning
+  /**
+   * @brief Handles the detection and response to line catching.
+   */
   void handleLineCatching() {
     if (if_catch_lines) {
       if ((leftColor.getColor() == follow_color) || (rightColor.getColor() == follow_color)) {
@@ -76,7 +90,9 @@ private:
     }
   }
 
-  // Function to adjust motor speeds based on the error
+  /**
+   * @brief Adjusts motor speeds based on the current PID error.
+   */
   void adjustMotorSpeeds() {
     left_direction = FORWARD;
     right_direction = FORWARD;
@@ -123,7 +139,9 @@ private:
     }
   }
 
-  // Function to drive the motors
+  /**
+   * @brief Drives the motors based on the computed speeds and directions.
+   */
   void drives() {  
     // Serial.println(error);
     leftMotor.drive(left_direction, left_pwm);
@@ -135,9 +153,18 @@ private:
   }
 };
 
-//Initialize the IR line follower class
+// Initialize the IR line follower class
 IRLineFollower irFollower;
 
+/**
+ * @brief Centers the robot on the line by rotating left or right based on the specified direction and line color.
+ * 
+ * This function stops the robot, adjusts its position to center it on the line, and then continuously adjusts
+ * its rotation to maintain alignment with the line. It uses color sensors to detect the line and control the robot's motion.
+ * 
+ * @param rotation The direction to rotate to center on the line (LEFT or RIGHT).
+ * @param follow_color The color of the line to follow.
+ */
 void centerOnLine(Cardinal rotation, Color follow_color) {
   bot.stopMotion();
   float turn_speed = 60;
@@ -186,6 +213,14 @@ void centerOnLine(Cardinal rotation, Color follow_color) {
   }
 }
 
+/**
+ * @brief Searches for and aligns the robot along the X-axis by detecting the specified line color.
+ * 
+ * This function attempts to locate the line by moving in a zigzag pattern. Once the line is found,
+ * it stops the robot and translates it to adjust the position on the X-axis, ensuring accurate alignment.
+ * 
+ * @param find_color The color of the line to locate and align with.
+ */
 void centerLine(Color find_color){
   Serial.println("== Locating Line on X axis ==");
     bool located = false;
@@ -229,4 +264,4 @@ void centerLine(Color find_color){
   bot.stopMotion();
 }
 
-#endif
+#endif // LINEFOLLOWING_H

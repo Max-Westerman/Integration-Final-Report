@@ -1,32 +1,50 @@
-
 #ifndef MOTION_H
 #define MOTION_H
-// =====================
+
+/**
+ * @file Motion.h
+ * @brief Header file for the Movement class, which controls robot movement mechanics.
+ *
+ * This file contains the class definition for managing the movement of the robot, including
+ * directional movement, stopping, turning, and translating over specified distances. It
+ * provides interfaces to higher-level motion control operations based on specified parameters.
+ */
 
 #include "Initialization.h"
 
-typedef float cm;
+typedef float cm; ///< Define a custom type for measurements in centimeters.
 
+/**
+ * @enum Cardinal
+ * @brief Enumeration for directionality in robot movements.
+ */
 enum Cardinal {
-  UP,
-  DOWN,
-  LEFT,
-  RIGHT,
+  UP,    ///< Represents upward movement or forward direction.
+  DOWN,  ///< Represents downward movement or backward direction.
+  LEFT,  ///< Represents leftward movement.
+  RIGHT  ///< Represents rightward movement.
 };
 
+/**
+ * @class Movement
+ * @brief Manages directional control and motion of the robot.
+ *
+ * The Movement class encapsulates methods for moving the robot in specific directions,
+ * stopping the robot, and performing complex maneuvers such as turning and translating
+ * at various speeds and durations.
+ */
 class Movement {
 public:
-  /*
-  There may be a difference in horizontal vs vertical percent_pwm. In our case, the
-  top motors are torque and the side motors are percent_pwm. Thus, we need a normalizer.
-  This is the vertical percent_pwm / horizontal percent_pwm.
-  */
-  float VERTICAL_VS_HORIZONTAL = 3.9;
-  float VERTICAL_LENGTH = 12;
-  float HORIZONTAL_LENGTH = 9;
-  float horizontal_distance = 0;
-  float vertical_distance = 0;
+  float VERTICAL_VS_HORIZONTAL = 3.9; ///< Normalizer ratio between vertical and horizontal motor PWM.
+  float VERTICAL_LENGTH = 12;         ///< Length of the robot's vertical axis in centimeters.
+  float HORIZONTAL_LENGTH = 9;        ///< Length of the robot's horizontal axis in centimeters.
+  float horizontal_distance = 0;      ///< Accumulated horizontal distance traveled.
+  float vertical_distance = 0;        ///< Accumulated vertical distance traveled.
 
+  /**
+   * @brief Calculate the total horizontal distance traveled by the robot.
+   * @return The calculated horizontal distance.
+   */
   float getHorizontalDistance() {
     topMotor.updateDistance();
     bottomMotor.updateDistance();
@@ -34,6 +52,10 @@ public:
     return horizontal_distance;
   }
 
+  /**
+   * @brief Calculate the total vertical distance traveled by the robot.
+   * @return The calculated vertical distance.
+   */
   float getVerticallDistance() {
     leftMotor.updateDistance();
     rightMotor.updateDistance();
@@ -41,6 +63,9 @@ public:
     return vertical_distance;
   }
 
+  /**
+   * @brief Stops all motor activity, effectively halting the robot.
+   */
   void stopMotion() {
     topMotor.drive(OFF, 0);
     bottomMotor.drive(OFF, 0);
@@ -48,6 +73,11 @@ public:
     rightMotor.drive(OFF, 0);
   }
 
+  /**
+   * @brief Moves the robot in a specified cardinal direction at a given PWM percentage.
+   * @param direction The cardinal direction to move.
+   * @param percent_pwm The PWM percentage to apply to the motors.
+   */
   void move(Cardinal direction,percent percent_pwm){
     switch (direction) {
       case UP:
@@ -77,6 +107,11 @@ public:
     }
   }
 
+  /**
+   * @brief Moves the robot in a specified cardinal direction based on a percentage of maximum speed.
+   * @param direction The cardinal direction to move.
+   * @param percent_speed The speed percentage to apply.
+   */
   void movePercent(Cardinal direction,percent percent_speed){
     // Move relative to a percent speed
     switch (direction) {
@@ -107,7 +142,12 @@ public:
     }
   }
 
-  // Translate the robot at a specific percent speed for a given distance
+  /**
+   * @brief Translates the robot in a specified direction for a given distance at a specified speed.
+   * @param direction The cardinal direction to move.
+   * @param percent_pwm The PWM percentage to apply to the motors.
+   * @param distance The distance to move in centimeters.
+   */
   void translate(Cardinal direction, percent percent_pwm, cm distance) {
     // Get the calibrated speed in cm/s based on the provided PWM percent
     float speed;
@@ -142,6 +182,11 @@ public:
     stopMotion();
   }
 
+  /**
+   * @brief Performs a turning maneuver in the specified direction at a given PWM percentage.
+   * @param direction The cardinal direction to turn towards.
+   * @param percent_pwm The PWM percentage to apply to the motors.
+   */
   void turn(Cardinal direction,percent percent_pwm){
     switch (direction) {
       case UP:
@@ -166,7 +211,8 @@ public:
   }
 };
 
-// Initializes the bot class so other files can use it
+// Initializes the Movement class instance to be available globally.
 Movement bot;
-#endif
+
+#endif // MOTION_H
 
