@@ -42,7 +42,7 @@ The first design is an adaptation of the fundamental designs demonstrated throug
     \label{fig:design1b}
 \end{figure}
 \begin{description}
-    \item[Box Property Detection --]A gripper mechanism is to place the box onto a small platform located on top of the robot that will contain an \gls{RGB} sensor to determine the package color, alongside an infrared sensor placed high enough to only detect the larger of two possible box sizes.
+    \item[Box Property Detection --]A gripper mechanism is to place the box onto a small platform on top of the robot that will contain an \gls{RGB} sensor to determine the package color, alongside an infrared sensor placed high enough to only detect the larger of two possible box sizes.
 \end{description}
 
 \newpage
@@ -104,7 +104,7 @@ The third design introduces a new movement strategy, and features a new sensor l
     \caption{Design 4a - simplified layout of movement and sensor systems}
     \label{fig:design4a}
 \end{figure}
-The fourth design reorients the wheels as to be square against the sides, and combines the ideas for centralized sensors of \cref{sec:design2} and \cref{sec:design3}.
+The fourth design reorients the wheels as to be square against the sides, and combines the ideas for centralized sensors of \cref{sec:design2} and \cref{sec:design3}. This was chosen as the final design; the decision matrix supporting this design ca
 \begin{description}
     \item[Wheel Configuration - ]The \glspl{omni} are now placed in a squared configuration to increase the maximum speed potential, as the cornered configuration has inherent losses in the cardinal directions --- those most relevant to the tasks presented.
     \item[Sensor Configuration - ]This iteration uses the middle color sensor idea from \cref{sec:design2}, and the centralized \gls{IR} array and ultrasonic sensor from \cref{sec:design3}. Together, these sensors provide as much information about the robot's location and orientation as possible.

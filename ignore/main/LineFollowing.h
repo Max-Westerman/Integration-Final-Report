@@ -1,10 +1,10 @@
 /**
  * @file LineFollowing.h
- * @brief This file contains the IRLineFollower class for line following using IR sensors.
+ * @brief This file contains the IRLineFollower class to handle line following using IR sensors.
  *
- * This class manages the behavior of a robot equipped with infrared (IR) sensors for
- * following a line on the ground. It includes methods for initializing the robot, processing
- * sensor data, and controlling the motors based on computed errors using a PID controller.
+ * This class manages the behavior of a robot equipped with infrared (IR) sensors for following
+ * a line on the ground. It includes methods for initializing the robot, processing sensor data,
+ * and controlling the motors based on computed errors using a PID controller.
  */
 
 #ifndef LINEFOLLOWING_H
@@ -12,6 +12,7 @@
 
 #include "Initialization.h"
 #include "Motion.h"
+#include <iostream>
 #include <functional>
 #include <thread>
 
@@ -21,7 +22,7 @@ public:
   const float max_threshold = 1; ///< Upper threshold for error handling.
   const float min_threshold = 0.55; ///< Lower threshold for error handling.
 
-  bool if_catch_lines = true; ///< Flag to determine if the robot uses delay turns on colors.
+  bool if_catch_lines = true; ///< Flag to determine if the robot should try to catch the line if lost.
   bool reverse_wheels = true; ///< Flag to enable wheel reversal for turning maneuvers.
   Color follow_color; ///< Color of the line being followed.
   float error; ///< Current error value calculated by sensors.
@@ -101,23 +102,18 @@ public:
     // Adjust the speed and direction based on the error and thresholds
     if (reverse_wheels) {
       if (error > min_threshold) {
-        right_speed = base_speed * (1.0 - (error - min_threshold) /
-          (max_threshold - min_threshold));
+        right_speed = base_speed * (1.0 - (error - min_threshold) / (max_threshold - min_threshold));
         if (error >= min_threshold + (max_threshold - min_threshold) / 2) {
           right_direction = BACKWARD;
-          right_speed = base_speed * (
-            1.0 - (error - min_threshold) / (max_threshold - min_threshold)
-            ) +20;
+          right_speed = base_speed * (1.0 - (error - min_threshold) / (max_threshold - min_threshold)) +20;
         }
       }
 
       if (error < -min_threshold) {
-        left_speed = base_speed * (1.0 + (error + min_threshold) /
-          (max_threshold - min_threshold));
+        left_speed = base_speed * (1.0 + (error + min_threshold) / (max_threshold - min_threshold));
         if (error <= -(min_threshold + (max_threshold - min_threshold) / 2)) {
           left_direction = BACKWARD;
-          left_speed = base_speed * (1.0 + (error + min_threshold) /
-            (max_threshold - min_threshold)) + 20;
+          left_speed = base_speed * (1.0 + (error + min_threshold) / (max_threshold - min_threshold)) + 20;
         }
       }
     }
@@ -161,11 +157,10 @@ public:
 IRLineFollower irFollower;
 
 /**
- * @brief Centers the robot on line by rotating based on the used direction and line color.
+ * @brief Centers the robot on the line by rotating left or right based on the specified direction and line color.
  * 
- * This function stops the robot, adjusts its position to center it on the line, and then
- * continuously adjusts its rotation to maintain alignment with the line. It uses color
- * sensors to detect the line and control the robot's motion.
+ * This function stops the robot, adjusts its position to center it on the line, and then continuously adjusts
+ * its rotation to maintain alignment with the line. It uses color sensors to detect the line and control the robot's motion.
  * 
  * @param rotation The direction to rotate to center on the line (LEFT or RIGHT).
  * @param follow_color The color of the line to follow.
@@ -219,11 +214,10 @@ void centerOnLine(Cardinal rotation, Color follow_color) {
 }
 
 /**
- * @brief Searches for and aligns the robot along X-axis by detecting specified line color.
+ * @brief Searches for and aligns the robot along the X-axis by detecting the specified line color.
  * 
- * This function attempts to locate the line by moving in a zigzag pattern. Once the line is
- * found, it stops the robot and translates it to adjust the position on the X-axis, ensuring
- * accurate alignment.
+ * This function attempts to locate the line by moving in a zigzag pattern. Once the line is found,
+ * it stops the robot and translates it to adjust the position on the X-axis, ensuring accurate alignment.
  * 
  * @param find_color The color of the line to locate and align with.
  */
