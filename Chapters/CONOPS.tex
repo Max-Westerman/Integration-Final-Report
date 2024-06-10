@@ -3,11 +3,11 @@
 \begin{document}
 
 \chapter{CONOPs (Concept of Operations)}\label{ch:conops}
-The purpose of this section is to provide the user of the robot with a clear and concise description of how this system is operated. The CONOPs provides a clear summary of how the vehicle will reach it's objective. 
+The purpose of this section is to provide the user of the robot with a clear and concise description of how this system is operated. The \gls{CONOP}s provides a clear summary of how the vehicle will reach it's objective. 
 \section{System Summary}
 \begin{itemize}
-    \item This system is a vehicle with the ability to move right, left, forwards, and backwards. This vehicle is powered by a battery and controlled using a microcontroller.
-    \item The vehicle has a gripper with an arm that allows it to reach for objects. 
+    \item This system is a vehicle with the ability to move right, left, forwards, backwards, and rotate. This vehicle is powered by a battery and controlled using a microcontroller.
+    \item The vehicle has a gripper with an arm that allows it to reach for \& pick up objects. 
     \item This vehicle can detect colors, obstacles, and lines.
 \end{itemize}
 \section{Initialization of the System}
@@ -15,12 +15,14 @@ The purpose of this section is to provide the user of the robot with a clear and
     \item Firstly, the \gls{ABHS} will be placed down on a flat surface, preferably the floor as it takes away the risk of the vehicle falling from a dangerous height.
     \item If the use of the \gls{ABHS} is to fulfill one of its requirements (Obstacle Avoidance, Pickup and Place System with Line Following), then the \gls{ABHS} should be placed in its starting position.
     \item All the connections should be secure and in accordance with the pin map provided with the vehicle.
-    \item The battery should at this point be connected and switched on, with the green lights appearing when the battery is on.
+    \item If a new version of the code is uploaded, verify that the \texttt{while (!Serial)} portion of the \cref{lst:main-h} has been commented out.
+    \item Ensure that any external connections the the Teensy 4.1 are terminated to eliminate the possibility of over-powering the Teensy 4.1.
+    \item The battery should at this point be connected and switched on, with the green lights appearing when the battery is on. The additional blue \gls{LED} will also light up when the battery is turned on.
 \end{itemize}
 
 \section{Standard Operating Modes}
 \begin{itemize}
-\item This system has 2 normal operating modes for which it was designed for:
+\item This system has 2 normal operating modes:
     \begin{itemize}
         \item This system was designed to perform obstacle avoidance. In the event of a wall being placed in front of the system, the vehicle would find a way around the wall as long as white boundary lines outline the obstacle course.
         \item This system was designed to pick up a box and recognize its color. It will then use this color to transport the box over a line of the same color, and place it in its finishing point. It will then return to its starting position. 
@@ -28,30 +30,30 @@ The purpose of this section is to provide the user of the robot with a clear and
 \end{itemize}
 \section {External Environment for use of the System}
 \begin{itemize}
-    \item This system should typically be used in a room temperature, dry environment. This is due to the open wire nature of the \gls{ABHS}, and its design being built at and for inside use.
+    \item This system should typically be used in a room temperature, dry environment. This is due to the open wire nature of the \gls{ABHS}, and its use-case of clean-room operation.
 \end{itemize}
 \section{Standard Maintenance}
 \begin{itemize}
     \item The battery for the \gls{ABHS} should always be charged in order for this system to work.
-    \item All wires should be maintained in the correct pin ports. If a wire is in the incorrect port, follow the pin map as provided.
+    \item All wires should be maintained in the correct pin ports. If a wire is in the incorrect port, follow the pin map as provided. \hl{LINK TO THE PINOUT}
     \item The vehicle should be kept in dry, stable conditions, and out of direct sunlight as to avoid potential damage to parts.
 \end{itemize}
 \section{Failure Modes due to Internal Problems}
 \begin{itemize}
     \item In the event of the user at any point seeing or smelling smoke coming from the vehicle, shut the battery off as soon as possible. 
     \item In the case of these events, troubleshoot the system to decipher what the problem point was. Start by seeing if any parts of the system are hot, specifically motors, the Teensy 4.1 microcontroller, and the buck converter. If any signs of overheating occur, immediately disconnect the part for further inspection.
-    \item Test the possibly damaged part to see if it functions correctly, if not, throw the part away.
+    \item Test the possibly damaged component to see if it functions correctly, if not, replace the damaged component.
 \end{itemize}
 \section{Reaction to External Failure Modes}
 \begin{itemize}
-    \item If on the obstacle course the vehicle drives into one of the walls, it should find its own way around it. No interaction is necessary. 
-    \item If on the obstacle avoidance, the vehicle drives off the course (ie. over the white line), immediately switch the battery off to avoid the vehicle running too far off course or crashing into something and damaging it.
-    \item If during box pickup the vehicle drops the box, reset the course and try to run the system again. If this fails again, check to ensure that the gear teeth of the gripper are properly connected.
+    \item If on the obstacle course the vehicle drives into one of the walls, it should find its own way around it. 
+    \item If the vehicle exits the testing course, (ie. over the white line), immediately switch the battery off to avoid the vehicle running too far off course \& potentially crashing, damaging the vehicle.
+    \item If during the box pickup test the vehicle drops the box, reset the course and try to run the system again. If this fails again, check to ensure that the gear teeth of the gripper are properly connected.
     \item If the vehicle fails to follow the line and veers off the path, turn off the battery and reset the course. 
 \end{itemize}
 \section{Shutdown of the System}
 \begin{itemize}
-    \item Make sure the vehicle has fully run the course of its current objective. Turn the battery off and ensure that the system is fully off.
+    \item Make sure the vehicle has fully run the course of its current objective. Turn the battery off and ensure that the system is fully off. If the vehicle is acting erroneously, it can be manually shut off during it's operation, as it is minimally hazardous to operators.
 \end{itemize}
 
 

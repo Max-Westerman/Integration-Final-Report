@@ -48,3 +48,81 @@
 % Creates a nicer "C++" symbol when typing out.
 \newcommand{\cplusplus}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
 \def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+
+% ===== REQUIREMENTS ===== %
+% Define new counters
+\newcounter{req}
+\newcounter{subreq}[req]
+\renewcommand{\thesubreq}{\thereq.\arabic{subreq}}
+
+% Define standard cref formats
+\crefname{req}{requirement}{requirements}
+\crefname{subreq}{requirement}{requirements}
+
+% Define custom reference command for numeric-only references
+% Simply use \ref for numeric references now that label format is numeric-only
+\newcommand{\crefnum}[1]{\ref{#1}}
+
+% Define requirement commands
+\newcommand{\requirement}[1]{%
+  \refstepcounter{req}%
+  \section*{Requirement \thereq: #1}
+  \addcontentsline{toc}{section}{Requirement \thereq: #1}
+  \label{req:\thereq}%
+}
+
+\newcommand{\subrequirement}[1]{%
+  \refstepcounter{subreq}%
+  \subsection*{Requirement \thesubreq: #1}
+  \addcontentsline{toc}{subsection}{Requirement \thesubreq: #1}
+  \label{subreq:\thesubreq}%
+}
+
+% Define new counters for Test and Subtest
+\newcounter{test}
+\newcounter{subtest}[test]
+\renewcommand{\thesubtest}{\thetest.\arabic{subtest}}
+
+% Define standard cref formats for Test and Subtest
+\crefname{test}{test}{tests}
+\crefname{subtest}{test}{tests}
+
+% Define custom reference command for numeric-only references
+% This command will use the same strategy as for requirements, using \ref directly
+\newcommand{\tcrefnum}[1]{\ref{#1}}
+
+% Define test commands
+\newcommand{\test}[1]{%
+  \refstepcounter{test}%
+  \section*{Test \thetest: #1}
+  \addcontentsline{toc}{section}{Test \thetest: #1}
+  \label{test:\thetest}%
+}
+
+\newcommand{\subtest}[1]{%
+  \refstepcounter{subtest}%
+  \subsection*{Test \thesubtest: #1}
+  \addcontentsline{toc}{subsection}{Test \thesubtest: #1}
+  \label{subtest:\thesubtest}%
+}
+
+% Creates indent and a grey line to the left
+\newmdenv[
+  leftline=true,
+  rightline=false,
+  topline=false,
+  bottomline=false,
+  linecolor=black!15,
+  innertopmargin=0pt,
+  innerbottommargin=0pt,
+  innerrightmargin=0pt,
+  innerleftmargin=10pt,
+  linewidth=2pt,
+  leftmargin=5pt,
+  rightmargin=0pt
+]{greylineformat}
+
+% Creates a less-indented itemize environment
+% with -- as the bullet point
+\newlist{dash-itemize}{itemize}{1}  % Only one level deep
+\setlist[dash-itemize,1]{label=--, leftmargin=*, labelindent=0cm, itemindent=0cm}

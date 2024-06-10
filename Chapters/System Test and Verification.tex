@@ -4,8 +4,156 @@
 
 \chapter{System Test and Verification}\label{ch:system-test}
 
+{
+\footnotesize
+\begin{longtable}{|R{2.8cm}|M{2.2cm}|M{2.4cm}|M{2.6cm}|M{0.7cm}|R{3cm}|}
+\caption{Verification and Validation Requirements} \label{tab:long_table} \\
+\hline \hline
+\multirow{2}{3.5cm}{\textbf{Element / Component}} & 
+\multirow{2}{*}{\textbf{Requirement}} & 
+\multicolumn{3}{c|}{\textbf{Verification \& Validation Methods}} & 
+\multirow{2}{3.5cm}{\textbf{Analysis}} \\ \cline{3-5} 
+ & 
+ & 
+\textbf{Inspection} & 
+\textbf{Demonstration} & 
+\textbf{Test} & 
+\\ \hline
+\endfirsthead
 
 
+\multicolumn{6}{c}%
+{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+\hline
+\multirow{2}{3.5cm}{\textbf{Element / Component}} & 
+\multirow{2}{*}{\textbf{Requirement}} & 
+\multicolumn{3}{c|}{\textbf{Verification \& Validation Methods}} & 
+\multirow{2}{3.5cm}{\textbf{Analysis}} \\ \cline{3-5} 
+ & 
+ & 
+\textbf{Inspection} & 
+\textbf{Demonstration} & 
+\textbf{Test} & 
+\\ \hline
+\endhead
 
+\hline \multicolumn{6}{|r|}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+% Insert your data here
+Box Pickup-and-Placement System & \crefnum{sub:recognition-of-the-i-beam} & \checkmark & & \checkmark & \Cref{tst:location-of-box} -- Location of Box \\
+\cline{2-6}
+& \crefnum{sub:orientation-of-the-i-beam} & \checkmark & & & \Cref{tst:location-of-box} -- Location of Box \\
+\cline{2-6}
+& \crefnum{sub:apprehend-the-box} & \checkmark & & \checkmark & \Cref{tst:pickup-of-box} -- Pickup of Box \\
+\cline{2-6}
+& \crefnum{sub:identify-the-color-of-the-box} & \checkmark & & \checkmark & \Cref{tst:pickup-of-box} -- Pickup of Box \\
+\cline{2-6}
+& \crefnum{sub:identify-the-size-of-the-box} & \checkmark & & \checkmark & \Cref{tst:pickup-of-box} -- Pickup of Box \\
+\cline{2-6}
+& \crefnum{sub:realign-with-the-line-following-course} & \checkmark & & \checkmark & \Cref{tst:line-box-following} -- Line Box Following \\
+\cline{2-6}
+& \crefnum{sub:follow-the-line-of-the-color-of-the-box-and-return} & & & & \Cref{tst:line-box-following} -- Line Box Following \\
+\cline{2-6}
+& \crefnum{sub:placement-of-the-box} & \checkmark & & \checkmark & \Cref{tst:line-box-following} -- Line Box Following \\
+\hline
+\multirow{-3}{*}{Drive Train} & \crefnum{sub:move-forward} & \checkmark & & \checkmark & \Cref{tst:basic-directional-movement} -- Basic Directional Movement \\
+\cline{2-6}
+& \crefnum{sub:move-backward} & \checkmark & & \checkmark & \Cref{tst:basic-directional-movement} -- Basic Directional Movement \\
+\cline{2-6}
+& \crefnum{sub:move-right} & \checkmark & & \checkmark & \Cref{tst:basic-directional-movement} -- Basic Directional Movement \\
+\cline{2-6}
+& \crefnum{sub:move-left} & \checkmark & & \checkmark & \Cref{tst:basic-directional-movement} -- Basic Directional Movement \\
+\cline{2-6}
+\multirow{-2}{*}{Drive Train cont.} & \crefnum{sub:rotational-movement} & \checkmark & & \checkmark & \Cref{tst:rotational-movement} -- Rotational Movement \\
+\hline
+\multirow{-2}{*}{IR Sensor} & \crefnum{sub:width-of-the-ir-sensors} & \checkmark & & & \Cref{tst:ir-array-observation} -- \gls{IR} Array Observation \\
+\cline{2-6}
+& \crefnum{sub:the-number-of-sensors-is-greater-than-6} & \checkmark & & & \Cref{tst:ir-array-observation} -- \gls{IR} Array Observation \\
+\cline{2-6}
+& \crefnum{sub:it-must-detect-and-distinguish-the-tape-and-tarp} & \checkmark & & \checkmark & \Cref{tst:ir-array-detection} -- \gls{IR} Array Detection \\
+\cline{2-6}
+& \crefnum{sub:it-must-be-able-to-calculate-error} & \checkmark & & \checkmark & \Cref{tst:ir-array-detection} -- \gls{IR} Array Detection \\
+\cline{2-6}
+& \crefnum{sub:deviation-adjustment} & \checkmark & & \checkmark & \Cref{tst:ir-array-movement} -- \gls{IR} Array Movement \\
+\hline
+\multirow{-3}{*}{Obstacle Avoidance} & \crefnum{sub:detection-of-walls} & \checkmark & & \checkmark & \Cref{tst:avoidance-of-boundaries-of-walls} -- Avoidance of Boundaries of Walls \\
+\cline{2-6}
+& \crefnum{sub:avoidance-of-walls} & \checkmark & & \checkmark & \Cref{tst:avoidance-of-boundaries-of-walls} -- Avoidance of Boundaries of Walls \\
+\cline{2-6}
+& \crefnum{sub:detection-of-side-boundaries-of-obstacle-course-via-color-sensors} & \checkmark & & \checkmark & \Cref{tst:color-sensing-for-side-boundaries} -- Color Sensing For Side Boundaries \\
+\cline{2-6}
+ & \crefnum{sub:stay-within-the-obstacle-course-until-course-is-complete} & \checkmark & & \checkmark & \Cref{tst:color-sensing-for-side-boundaries} -- Color Sensing For Side Boundaries \\
+\cline{2-6}
+ & \crefnum{sub:detection-of-the-finish-line-of-obstacle-course-via-color-sensors} & \checkmark & & \checkmark & \Cref{tst:color-sensing-for-end-boundaries} -- Color Sensing For End Boundary \\
+\cline{2-6}
+ & \crefnum{sub:system-stops-at-the-end-of-the-course} & \checkmark & & \checkmark & \Cref{tst:color-sensing-for-end-boundaries} -- Color Sensing For End Boundary \\
+\end{longtable}
+\scriptsize
+}
+
+\test{Location of Box}\label{tst:location-of-box}
+\Cref{sub:recognition-of-the-i-beam,sub:orientation-of-the-i-beam} of the project were put in place to make the vehicle identify where the location of the I-beam is and to align the center of the system with the I-beam so the vehicle shall successfully pick up and place the box. These requirements were verified via inspection by watching the vehicle perform and by testing. The test was a type 2 test. The expected result of this test is that the vehicle shall move forward until the I-beam is detected and the vehicle will center itself in the middle of the I-beam. The vehicle was placed on a black tarp, the front end facing the I-beam. The I-beam is 20 inches in front of the vehicle, slightly off to the vehicle’s left. The USB connected the battery to the Teensy 4.1 board. The \texttt{PickupPlace} code in Arduino was then verified and uploaded. The battery is then turned on and the test begins. 
+
+It was observed that the vehicle deviated off center and once the system detected the I-beam, the vehicle was to the right of the I-beam. The vehicle then moved forward, but it was not centered with the I-beam. The left motor speed was then adjusted slightly and an \gls{IR} sensor array was added to the bottom of the front part of the vehicle. The test was ran again 3 more times and it was observed that the centering of vehicle improved dramatically. However the system’s ability to detect the I-beam was still not meeting standards. It was then decided that using the left and right ultrasonic sensors was not bringing the accuracy and precision that was needed. A middle ultrasonic is then added in front of the front omni-wheel. The test is then ran again and it was observed that rhe vehicle then moved forward and was able to stay on a straight line and once the middle front sensor reached its trigger point it would start. After making these adjustments, the test and \cref{sub:recognition-of-the-i-beam,sub:orientation-of-the-i-beam} were then deemed successful.
+
+\test{Pickup of Box}\label{tst:pickup-of-box}
+\Cref{sub:apprehend-the-box} of the project state that the vehicle shall apprehend the box with the gripper. \Cref{sub:identify-the-color-of-the-box,sub:identify-the-size-of-the-box} identifying the color and size of the box also were able to be included in this test. These requirements were verified via inspection by watching the vehicle perform and by testing. The test was a type 2 test. The expected result of this test is that once the vehicle has arrived to the platform, centered itself with the platform, and lowered the gripper arm, the gripper shall apprehend the box and the examiner will be able to tell via the serial monitor the color of the box and the size of the box. Another aspect of this test was making sure the pushbuttons would click when it makes contact with the box. The 2 pushbutton are attached to the inside of the gripper finger clicked. The purpose of the pushbutton were to make sure the gripper finger stopped closing once it had apprehended the box and not squeeze the box. The gripper arm would then rise and the test would be deemed complete.  The blue and red boxes are then held between the fingers of the gripper where a color sensor is placed, and the color sensor is calibrated for the test. The vehicle was placed on a black tarp that has a green line. The vehicle is placed on top of a green line parallel to the I-beam, the front end of the vehicle faced the I-beam. A red box is placed on top of the I-beam. The I-beam is 20 inches in front of the vehicle, slightly off to the vehicle’s left. The USB connected the battery to the Teensy 4.1 board. The \texttt{PickupPlace} code in Arduino was then verified and uploaded. The battery is then turned on and the test begins. 
+
+It is observed that the system moves forward and is centered itself with the I-beam. The gripper arm then lowers, however it does not lower enough that the gripper fingers are in between the box, the gripper fingers then close and the arm raises. The first adjustment that is made is the gripper arm angle. This is a line of code that determine how low or high the gripper arm will go. The gripper arm angle is adjusted and then test is ran again. It is then observed that system moves forward and is centred itself with the I-beam. The gripper arm then lowers the proper amount and the box is between the gripper fingers. The gripper finger closes and picks up the box successfully. It was also observed that the pushbutton did click. Another observation is made via observing the serial monitor on Arduino is that the color sensors and timing algorithm are working properly thus the correct color of the box can be detected and the time it takes the gripper to close can be record. The test is then ran 2 more times to check for consistency and it is observed that both times the pushbutton did not click. An adjustment is then made to the gripper finger which is removing the front pushbutton. The test is then ran 2 more times and 
+\cref{sub:apprehend-the-box,sub:identify-the-size-of-the-box,sub:identify-the-color-of-the-box} are all met as well as the consistency of the pushbutton.
+
+\test{Line Box Following}\label{tst:line-box-following}
+\Cref{sub:realign-with-the-line-following-course} of the project states that the vehicle shall realign itself with the line following course. This must be done after apprehending the box and identifying the size and color of the box, thus for this test, it is assumed that \cref{sub:recognition-of-the-i-beam,sub:orientation-of-the-i-beam,sub:apprehend-the-box,sub:identify-the-size-of-the-box,sub:identify-the-color-of-the-box} are deemed complete. This test shall also check \cref{sub:follow-the-line-of-the-color-of-the-box-and-return,sub:placement-of-the-box}. These requirements were verified via inspection by watching the vehicle perform the line box following testing. The test was a type 2 test. The expected result of this test is once the vehicle has arrived to the platform, centered itself with the platform, lowered the gripper arm, apprehended the box, and determined the color and size of the box, the system will move backward until it has sensed a green line. It will then center itself over the green line, rotate the front of the vehicle to the side of the line that correlates to the box color, which will be blue or red for this project, and follow the green line to start of the red or blue line. It will then rotate onto the blue or red line and follow it to the other end of the course where it will be place it on a specific I-beam based on the size of the box. The vehicle was placed on a black tarp that has a green line. The vehicle is placed on top of a green line parallel to the I-beam, the front end of the vehicle faced the I-beam. A ‘big’ red box is placed on top of the I-beam. The USB connected the battery to the Teensy 4.1 board. The \texttt{PickupPlace} code in Arduino was then verified and uploaded. The battery is then turned on and the test begins. 
+
+It was observed that the vehicle did arrived to the platform, centered itself with the platform, lowered the gripper arm, apprehended the box, and determined the color and size of the box, the system then moved backward until it has sensed a green line. It then centered itself over the green line, rotated the front of the vehicle to the side of the red line and moved forward on the green line to the beginning of the red line. The rotation onto the red line and its ability to stay straight on the red line was lacking. The system would make it all the way to the fork of the red tape where the red line split into two lines and the vehicle was to follow one of them depending on the size of the box. Once it reached that point it was not able to stop and move horizontally in the proper manner which is key for \cref{sub:placement-of-the-box}. The vehicle was also have issues centering itself over the red line and it was determined as well that the systems ability to consistently put itself over the green line to the standard we expected was not being met. It was then decided that a color sensor needed to be added to the front of the vehicle on the bottom side. This was put in to help center the vehicle on the green, red, and blue lines of tape and identify the fork of the red or blue tape. Another adjustment that was added was to vehicle was vehicle was an \gls{IR} Array. After the color sensor was calibrated and the \gls{IR} array was tested, the line box following test was ran again. It was observed that the vehicle did arrived to the platform, centered itself with the platform, lowered the gripper arm, apprehended the box, and determined the color and size of the box, the system then moved backward until it has sensed a green line. It then centered itself over the green line, rotated the front of the vehicle to the side of the red line and moved forward on the green line to the beginning of the red line. The vehicle then geometrically centered over the red line, rotated onto the red line and did not get off track. It then followed the red line all the way to fork of red tape, stopped when it was supposed to, moved to the right, followed the red tape forward, sensed the I-beam, placed the box back on the I-beam. It then raised the gripper arm slightly, rotated 180 degrees and followed the red line back to the start of the red line. 
+
+\test{Basic Directional Movement}\label{tst:basic-directional-movement}
+This test is set up to complete \cref{sub:move-forward,sub:move-backward,sub:move-right,sub:move-left} which are the foundation of the project by being able to move in all directions. These requirements were verified via inspection by watching the vehicle perform and by testing. The test was a type 1 test. The expected result is that the vehicle’s left, right, front, and rear wheel shall rotate forward and backwards half a second each and then after all 4 wheels rotate the vehicle shall move forward for 3 seconds, and stop. Then move backwards for 3 seconds, and stop. It would next move right for 3 seconds, and stop. Then move left for 3 seconds, and stop. The vehicle was placed on the floor. The USB connected the battery to the Teensy 4.1 board. A method in the code, \texttt{motorTest()}, under the class \texttt{Motor}, was then verified and uploaded. The battery is then turned on and the test begins. The code is found in \cref{lst:motor-h}.
+
+It was observed that the vehicle’s left, right, front, and rear wheel rotated forward and backwards half a second each move forward for 3 seconds, and stop. Then the vehicle moved forward for 3 seconds and stopped. It then moved backwards for 3 seconds, and stop. It next moved right for 3 seconds, and stop. Then moved left for 3 seconds, and stop. The test and requirements \cref{sub:move-forward,sub:move-backward,sub:move-right,sub:move-left} were then deemed successful.
+
+\test{Rotational Movement}\label{tst:rotational-movement}
+This test is set up to complete \cref{sub:rotational-movement}. This requirements was verified via inspection by watching the vehicle perform and by testing. The test was a type 1 test. The expected result is that the vehicle shall follow a piece of red tape that is straight for the first 2 and a half feet and then veers 45 degrees to the right. The vehicle was placed on a black tarp at the beginning of the red tape, with the front of the vehicle facing the red tape. The USB connected the battery to the Teensy 4.1 board. The code within \gls{IR} class Arduino was then verified and uploaded, seen in \cref{lst:irsensorarray-h}. The battery is then turned on and the test begins. 
+
+It was then observed that the vehicle would move straight forward on the red tape but when it encountered the red tape at the 45 degree angle, the vehicle was over rotating and unable to rotate onto the centerline. One adjustment that was made was to change the speed of the front and back motors. Another change that was made was to the \gls{IR} array sensor and how the vehicle used the error data the array produced. After the test was run 3 more times and the motor speeds were changed, it was observed that the vehicle would move straight forward on the red tape and  then encountered the red tape, it would properly rotate to the center of the red tape at a 45 degree line. Test and \cref{sub:rotational-movement} were deemed complete. 
+
+\test{IR Array Observation}\label{tst:ir-array-observation}
+\Cref{sub:width-of-the-ir-sensors,sub:the-number-of-sensors-is-greater-than-6} were completed via inspection. The \gls{IR} Array was scaled against the tape that is used for the courses. It was deemed it was the bigger than the size of the tape in terms of width. The number of sensors was also deemed to be greater than 6. \Cref{sub:width-of-the-ir-sensors,sub:the-number-of-sensors-is-greater-than-6} were completed. 
+
+\test{IR Array Detection}\label{tst:ir-array-detection}
+\Cref{sub:it-must-detect-and-distinguish-the-tape-and-tarp} is completed via inspection and testing. The \gls{IR} Array is attached to the button of the vehicle and connected to the Teensy 4.1 board via wires. The expected result of this test is that the vehicle will move as straight as possible on a red line of tape. The serial monitor will be observed at the same time of the vehicle’s movement. It is expected that once the vehicle begins to deviate right or left the values the serial monitor will change from what they were when the vehicle was moving straight. The vehicle is placed at the beginning of a straight piece of red tape, 30 inches long. The USB connected the battery to the Teensy 4.1 board. The \gls{IR} Array Test code is uploaded and verified. The battery is then turned on and the test begins. 
+
+It is observed that the values of the serial monitor are changing when a sensor is over the tape compared to the black tarp. When the left arrays deviate to the left off the red tape their values become less than zero and when the right sensors deviate to the right off the tape, their values are greatest than zero. It is deemed \cref{sub:it-must-detect-and-distinguish-the-tape-and-tarp} is complete. 
+
+\hl{THERE IS NO SUB REQUIREMENT 2.16.1?}
+
+\hl{Sub-requirement 2.16.1} is also completed in this this test by adding code that sums of the average values of the right sensors and add that value to the sum of the left array values. We are able to tell with that value if the vehicle is deviating left of right. If the value is negative it’s beginning to yaw to the left and if the value is positive we know it is beginning to yaw to the right. 
+
+The updated code is verified and uploaded, the test is ran again. The vehicle moved forward on the red line and began to deviate to the left and a negative error was observed on the serial monitor. It was deemed \hl{requirement 2.16.1} is complete. 
+
+\test{IR Array Movement}\label{tst:ir-array-movement}
+The \gls{IR} array movement test is set to complete \cref{sub:it-must-be-able-to-calculate-error}. The expected result of this test is that the vehicle shall correct its deviation by turning back onto the line. The test will be on a green, blue, and red line. The rate of how much the vehicle turns is based on the absolute value of the error. The further away the error is from zero the more it will turn. The vehicle is placed at the beginning of a straight piece of red tape, 30 inches long. The USB connected the battery to the Teensy 4.1 board. The \gls{IR} Array deviation Test code is uploaded and verified. The battery is then turned on and the test begins. 
+
+It is observed that the vehicle moved forward and deviated to the right and gave an error value of 0.4 when it began to drift to the right. It was then observed however that the amount the system corrected itself to the left was not enough thus it did not put itself back on the red tape. It was then decided that the proportional gain needed to be adjusted by increasing the value. The code was then updated and the test was then ran again. This test run the system drifted to the left and the error value as it first began to deviate from the line was -0.2, it then corrected it path by the correct amount of rotation. This was then tested on a green and blue line as well and no issues were found. \Cref{sub:it-must-be-able-to-calculate-error} was deemed complete
+
+
+\test{Avoidance of Boundaries of Walls}\label{tst:avoidance-of-boundaries-of-walls}
+\Cref{sub:detection-of-walls,sub:avoidance-of-walls} of the project were put in place to make the vehicle avoid all walls within the obstacle course. These requirements were verified via inspection by watching the vehicle perform and by testing. The test was a type 2 test. The expected result of this test is that the vehicle will move forward until a wall is detected at a trigger distance, then move left until the right sensor senses a gap. It will then move forward until a wall is detected at trigger distance and then move left again. It is also expected that the vehicle stays in a straight line when moving horizontally. The test would then be deemed complete. The vehicle was placed on a black tarp, the front end facing the obstacle course. Two walls were placed on the obstacle course, one on the left side and one on the right side, about 30 inches apart vertically.  The USB connected the battery to the Teensy 4.1 board. The obstacle code in Arduino was then verified and uploaded. The battery is then turned on and the test begins. 
+
+It was observed that the vehicle would move forward property, move left properly, stay in a straight line when moving horizontally, and not hit the wall or obstacle when moving forward, however when a gap was sensed it would wait too long to move forward. This was then fixed by reducing the motor speed and decreasing the delay. After making these adjustments, the test and \cref{sub:detection-of-walls,sub:avoidance-of-walls} were then deemed successful.
+
+\test{Color Sensing For Side Boundaries}\label{tst:color-sensing-for-side-boundaries}
+\Cref{sub:detection-of-side-boundaries-of-obstacle-course-via-color-sensors} was tested in the color sensing test for the side boundaries. This requirement was verified via inspection by watching the vehicle perform and by testing. The test was a type 2 test. The expected result of this test is that it would move forward from the starting position, detect a wall, and then move left until it detected a white line and move in the opposite direction which would satisfy \cref{sub:stay-within-the-obstacle-course-until-course-is-complete}. The vehicle was placed on a black tarp, the front end facing the obstacle course. Two walls are placed side by side about 20 inches from the starting position. The USB connected the battery to the Teensy 4.1 board. This test assumes \hl{test 4.1} and \cref{sub:detection-of-walls,sub:avoidance-of-walls} are completed. The obstacle test code which includes the color sensing code and obstacle avoidance code in Arduino was then verified and uploaded. The battery is then turned on and the test begins.
+
+It was then observed that the vehicle moved forward, detected a wall, and moved left until a white line was detected, however, the vehicle then oscillated over the white line and did not have the ability to move back to the right. It was then discovered that the color sensors did not clear the data from the previous loop of code and since this code was using average color values the sensor had seen, it was then realized the data needed to be cleared so it wouldn’t affect the next task. This adjustment was made to the code. The test was then run again in the same form. It was then observed that the vehicle moved forward, detected a wall, and moved left until a white line was detected then moved back to the right side of the obstacle course, detected a white line, and moved back to the left. After making these adjustments, the test and \cref{sub:detection-of-side-boundaries-of-obstacle-course-via-color-sensors} were then deemed successful.
+
+\test{Color Sensing for End Boundaries}\label{tst:color-sensing-for-end-boundaries}
+\Cref{sub:detection-of-the-finish-line-of-obstacle-course-via-color-sensors,sub:system-stops-at-the-end-of-the-course} was tested in the color sensing test for the end boundary. This requirement was verified via inspection by watching the vehicle perform and by testing. The test was a type 2 test. The expected result of this test is that it would move forward from the starting position, detect a green line, and then fully cross the green line where it would come to a complete stop which would satisfy \cref{sub:system-stops-at-the-end-of-the-course}. The vehicle was placed on a black tarp, about 15 inches from the end of green tape/end of the course. The USB connected the battery to the Teensy 4.1 board. The obstacle test code which includes the color sensing code in Arduino was then verified and uploaded. The battery is then turned on and the test begins.
+
+It was then observed that the vehicle moved forward, and detected a green line, however, the vehicle then only moved about halfway across it. \hl{A delay function and a variable named VerticleBoxLength were added to the code to make the vehicle fully cross the line in a more accurate manner.} The test was then run again and the vehicle detected a green line and fully crossed the line and then came to a complete stop. \Cref{sub:system-stops-at-the-end-of-the-course,sub:detection-of-the-finish-line-of-obstacle-course-via-color-sensors} were fulfilled, thus a successful test. 
 
 \end{document}

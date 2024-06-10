@@ -1,9 +1,18 @@
 \documentclass[11pt]{report}
 \usepackage{StyleSheets/main}
+\usetikzlibrary{external}     % Allows for cached complitation
+\tikzexternalize[prefix=Graphs/tikz/] % Sets cache directory
 
 \begin{document}
 
 \begin{titlepage}
+
+    \tikzset{external/export next=false} % Exclude from externalization
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south east, inner sep=0, opacity=0.05, xshift=100mm, yshift=35mm] at (current page.south east) {
+            \includegraphics[width=\paperwidth]{Images/Robot/robot_front_view_greyscale.pdf}  % Adjust only width or height
+        };
+    \end{tikzpicture}
     
     \centering
     

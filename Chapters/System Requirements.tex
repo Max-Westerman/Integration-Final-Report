@@ -4,87 +4,92 @@
 
 \chapter{System Requirements}\label{ch:system-requirements}
 
-\hl{Remove instances of "Our" and such.}
-The overall objective of the system our team has built involves numerous requirements that helped us achieve our objectives. One of the main goals will be for the vehicle to complete the obstacle course in a timely fashion that avoids walls and does not pass specific colored tape. The other main goal will be for the obstacle to pick up a specific colored box, and then follow a particular line of color of the box to a drop-off site, where the vehicle will place the box back down.
+The overall objective of the system involves numerous requirements that helped achieve the objectives. One of the main goals will be for the vehicle to complete the obstacle course in a timely fashion that avoids walls and does not pass specific colored tape. The other main goal will be for the obstacle to pick up a specific colored box, and then follow a particular line of color of the box to a drop-off site, where the vehicle will place the box back down
 
-\section{Box Pick-up and Placement System}
+\requirement{Box Pick-up and Placement System}\label{sc:box-pick-up-and-placement-system}
+\begin{greylineformat}
+\vspace{-1.6em}
+\subrequirement{Recognition of the I-beam}\label{sub:recognition-of-the-i-beam}
+The vehicle shall find the I-beam on the course.
 
-\subsection{Recognition of the I-Beam}
-The vehicle shall find the I-Beam on the course.
+\subrequirement{Orientation of the I-beam}\label{sub:orientation-of-the-i-beam}
+The vehicle shall orientate/center itself with the I-beam.
 
-\subsection{Orientation of the I-Beam}
-The vehicle shall orientate/center itself with the I-Beam
-
-\subsection{Apprehend the Box}
+\subrequirement{Apprehend the Box}\label{sub:apprehend-the-box}
 The vehicle shall apprehend the box with the gripper.
 
-\subsection{Identify the Color of the Box}
+\subrequirement{Identify the Color of the Box}\label{sub:identify-the-color-of-the-box}
 The vehicle shall identify the color of the box.
 
-\subsection{Identify the Size of the Box}
+\subrequirement{Identify the Size of the Box}\label{sub:identify-the-size-of-the-box}
 The vehicle shall identify the size of the box. 
 
-\subsection{Realign with the Line Following Course}
+\subrequirement{Realign with the Line Following Course}\label{sub:realign-with-the-line-following-course}
 The vehicle shall move itself back onto the line following the course after it has apprehended the box.
 
-\subsection{Follow the Line of the Color of the Box and Return.} 
+\subrequirement{Follow the Line of the Color of the Box and Return.}\label{sub:follow-the-line-of-the-color-of-the-box-and-return}
 The vehicle shall follow the colored line of the box’s color it has apprehended.
 
-\subsection{Placement of the Box}
-The vehicle shall place the box on the appropriate I-Beam based on the color and size of the box.
+\subrequirement{Placement of the Box}\label{sub:placement-of-the-box}
+The vehicle shall place the box on the appropriate I-beam based on the color and size of the box.
+\end{greylineformat}
 
-\section{Drive Train \& Steering System}
-
-\subsection{Move Forward}
+\requirement{Drive Train \& Steering System}\label{sc:drive-train-and-steering-system}
+\begin{greylineformat}
+\vspace{-1.6em}
+\subrequirement{Move Forward}\label{sub:move-forward}
 The vehicle shall move forward in a straight line.
 
-\subsection{Move Backward}
+\subrequirement{Move Backward}\label{sub:move-backward}
 The vehicle shall move backward in a straight line.
 
-\subsection{Move Right}
+\subrequirement{Move Right}\label{sub:move-right}
 The vehicle shall move right in a straight line.
 
-\subsection{Move Left}
+\subrequirement{Move Left}\label{sub:move-left}
 The vehicle shall move left in a straight line.
 
-\subsection{Rotational Movement}
-The vehicle shall rotate to the right or left.
+\subrequirement{Rotational Movement}\label{sub:rotational-movement}
+The vehicle shall rotate to the right and left.
 
-\section{Sensor Requirement: IR Sensor Array}
+\end{greylineformat}\requirement{Sensor Requirement: IR Sensor Array}\label{sc:sensor-requirement-ir-sensor-array}
+\begin{greylineformat}
+\vspace{-1.6em}
+\subrequirement{Width of the IR Sensors}\label{sub:width-of-the-ir-sensors}
+The width of the \gls{IR} array shall be bigger than the width of the tape.
 
-\subsection{Width of the IR Sensors}
-The width of the \gls{IR} Array shall be bigger than the width of the tape.
+\subrequirement{The number of sensors is greater than 6}\label{sub:the-number-of-sensors-is-greater-than-6}
+The amount of sensors on the \gls{IR} array is greater than 6.
 
-\subsection{The number of sensors is greater than 6}
-The amount of sensors on the \gls{IR} Array is greater than 6.
+\subrequirement{It Must Detect and Distinguish the Tape and Tarp}\label{sub:it-must-detect-and-distinguish-the-tape-and-tarp}
+The \gls{IR} array must be able to distinguish between the colored tape and the black tarp.
 
-\subsection{It Must Detect and Distinguish the Tape and Tarp}
-The \gls{IR} Array must be able to distinguish between the colored tape and the black tarp.
+\subrequirement{It Must be able to Calculate Error}\label{sub:it-must-be-able-to-calculate-error}
+The \gls{IR} array must be able to calculate the error to recognize which way the vehicle is deviating.
 
-\subsection{It Must be able to Calculate Error}
-The \gls{IR} Array must be able to calculate the error to recognize which way the vehicle is deviating.
-
-\subsection{Deviation Adjustment}
+\subrequirement{Deviation Adjustment}\label{sub:deviation-adjustment}
 The vehicle shall properly correct the vehicle if it deviates from the red, blue, or green line.
 
-\section{Task-2 Completion Times (Obstacle Course)}
+\end{greylineformat}\requirement{Task-2 Completion Times (Obstacle Course)}\label{sc:task-2-completion-times-obstacle-course}
+\begin{greylineformat}
+\vspace{-1.6em}
+\subrequirement{Detection of Walls }\label{sub:detection-of-walls}
+The vehicle shall detect the walls of the obstacle course via ultrasonic sensors.
 
-\subsection{Detection of Walls }
-The vehicle shall detect the walls of the obstacle course via ultrasonic sensors
-\subsection{Avoidance of Walls}
+\subrequirement{Avoidance of Walls}\label{sub:avoidance-of-walls}
 The vehicle shall move forward and avoid the walls of the obstacle course by the system not touching any part of the wall. 
 
-\subsection{Detection of Side Boundaries of Obstacle Course via Color Sensors}
+\subrequirement{Detection of Side Boundaries of Obstacle Course via Color Sensors}\label{sub:detection-of-side-boundaries-of-obstacle-course-via-color-sensors}
 The vehicle shall have color sensors that will identify when the system is at the side boundaries of the course. For this specific test, the side boundary is outlined by white tape.
 
-\subsection{Stay within the Obstacle Course Until Course is Complete}
+\subrequirement{Stay within the Obstacle Course Until Course is Complete}\label{sub:stay-within-the-obstacle-course-until-course-is-complete}
 The vehicle’s center of mass shall not deviate outside the side boundary and stay within the obstacle course until completion. 
 
-\subsection{Detection of the Finish Line of Obstacle Course via Color Sensors}
-The vehicle shall have color sensors that will identify when the system is at the side boundaries of the course. For this specific test, the side boundary is outlined by white tape.
+\subrequirement{Detection of the Finish Line of Obstacle Course via Color Sensors}\label{sub:detection-of-the-finish-line-of-obstacle-course-via-color-sensors}
+The vehicle shall detect the green line via color sensors. The system shall fully cross the green line and stop.
 
-\subsection{System Stops at the End of the Course}
+\subrequirement{System Stops at the End of the Course}\label{sub:system-stops-at-the-end-of-the-course}
 The vehicle shall detect the green line and fully cross the line, and then stop. 
-
+\end{greylineformat}
 
 \end{document}
