@@ -7,11 +7,7 @@
  * in an automated system. Methods within this class manage the complete lifecycle of box handling
  * from reaching for the box to placing it at a designated location.
  *
- * Created by: [Your Name]
- * Date: [Creation Date]
- *
- * Modifications:
- * Date: [Modification Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef BOX_CONTROL_H

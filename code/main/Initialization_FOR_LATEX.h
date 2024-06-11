@@ -6,11 +6,7 @@
  * sensors, and controllers used in a robotics system. It sets up motors, ultrasonic sensors, color sensors, servos, 
  * and other devices to their initial states and configurations.
  *
- * Created by: [Your Name]
- * Date: [Creation Date]
- *
- * Modifications:
- * Date: [Modification Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef INITIALIZATION_H

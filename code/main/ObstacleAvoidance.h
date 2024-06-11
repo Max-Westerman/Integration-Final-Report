@@ -1,10 +1,11 @@
 /**
  * @file ObstacleAvoidance.h
- * @brief Header file for the ObstacleAvoidance class, managing obstacle detection and navigation.
+ * @brief Header file for the ObstacleAvoidance class, managing obstacle detection and
+ * navigation.
  *
- * This file contains the class definition for ObstacleAvoidance, which uses ultrasonic sensors
- * and color detection to navigate around obstacles, maintain proper distances from walls, and
- * execute search patterns.
+ * This file contains the class definition for ObstacleAvoidance, which uses ultrasonic
+ * sensors and color detection to navigate around obstacles, maintain proper distances from
+ * walls, and execute search patterns.
  */
 
 #ifndef OBSTACLEAVOIDANCE_H
@@ -25,24 +26,24 @@ public:
     FOUND_END,      ///< State indicating that the end has been found.
   };
 
-  cm MIN_DISTANCE = 15;                              ///< Closest desired distance to the wall.
-  cm MAX_DISTANCE = 45;                              ///< Maximum desired distance from the wall.
+  cm MIN_DISTANCE = 15;                        ///< Closest desired distance to the wall.
+  cm MAX_DISTANCE = 45;                        ///< Maximum desired distance from the wall.
   cm MEAN_DISTANCE = (MAX_DISTANCE + MIN_DISTANCE)/2;///< Optimal distance from the wall.
   cm MAX_PERPENDICULAR_DIFFERENCE = MEAN_DISTANCE/1.5;///< Max distance difference for perpendicular orientation.
-  unsigned long REORIENT_TIME = 500;                 ///< Time interval for reorientation checks.
-  ObstacleFlag obstacle_flag = SEARCH_FORWARD;       ///< Initial search state.
-  Cardinal current_horizontal_search = RIGHT;        ///< Initial horizontal search direction.
+  unsigned long REORIENT_TIME = 500;           ///< Time interval for reorientation checks.
+  ObstacleFlag obstacle_flag = SEARCH_FORWARD; ///< Initial search state.
+  Cardinal current_horizontal_search = RIGHT;  ///< Initial horizontal search direction.
 
-  cm GAP_DISTANCE = 100;                             ///< Distance that triggers moving through an obstacle.
-  cm PERPENDICULAR_DISTANCE_MARGIN_OF_ERROR = 2;     ///< Allowed error margin for perpendicular orientation.
+  cm GAP_DISTANCE = 100;            ///< Distance that triggers moving through an obstacle.
+  cm PERPENDICULAR_DISTANCE_MARGIN_OF_ERROR = 2;     ///< Allowed error margin for perp
 
-  percent LEFT_SPEED = 100;                          ///< Speed for leftward "crab walk" motion.
-  percent RIGHT_SPEED = 100;                         ///< Speed for rightward "crab walk" motion.
-  percent FORWARD_SPEED = 100;                       ///< Speed for forward and backward motion.
-  percent PERPENDICLUAR_TURN_SPEED = 80;             ///< Speed for turning to become perpendicular.
-  int obstacles_cleared = 0;                         ///< Counter for obstacles cleared.
-  int NUMBER_OF_OBSTACLES = 3;                       ///< Total number of obstacles to clear.
-  cm CLEARANCE_SIZE = 8.5;                           ///< Clearance size for navigation.
+  percent LEFT_SPEED = 100;                 ///< Speed for leftward "crab walk" motion.
+  percent RIGHT_SPEED = 100;                ///< Speed for rightward "crab walk" motion.
+  percent FORWARD_SPEED = 100;              ///< Speed for forward and backward motion.
+  percent PERPENDICLUAR_TURN_SPEED = 80;    ///< Speed for turning to become perpendicular.
+  int obstacles_cleared = 0;                ///< Counter for obstacles cleared.
+  int NUMBER_OF_OBSTACLES = 3;              ///< Total number of obstacles to clear.
+  cm CLEARANCE_SIZE = 8.5;                  ///< Clearance size for navigation.
 
   /**
    * @brief Checks if the robot is perpendicular to a wall using ultrasonic sensors.
@@ -55,7 +56,8 @@ public:
     cm ultrasonic_distance_difference;
     bool is_perpendicular;
 
-    ultrasonic_distance_difference = abs(leftSonic.getDistance() - rightSonic.getDistance());
+    ultrasonic_distance_difference = abs(
+      leftSonic.getDistance() - rightSonic.getDistance());
     is_perpendicular = ultrasonic_distance_difference <= PERPENDICULAR_DISTANCE_MARGIN_OF_ERROR;
     return is_perpendicular;
   }
@@ -120,7 +122,10 @@ public:
       // Check if 2 seconds have passed since the last reorientation
       bool reorient_timing = (millis() - lastReorientTime >= REORIENT_TIME);
       bool no_gap = (GAP_DISTANCE >= likeSonic.getDistance());
-      bool ultrasonic_difference = (likeSonic.getDistance() - oppositeSonic.getDistance()) <= MAX_PERPENDICULAR_DIFFERENCE;
+      bool ultrasonic_difference = (
+        likeSonic.getDistance() - oppositeSonic.getDistance()
+        ) <= MAX_PERPENDICULAR_DIFFERENCE;
+
       if (reorient_timing && no_gap && ultrasonic_difference) {
         become_perpendicular();
         lastReorientTime = millis(); // Reset the timer
@@ -141,7 +146,10 @@ public:
           bot.move(DOWN,FORWARD_SPEED);
         }
         bool no_gap = (GAP_DISTANCE >= likeSonic.getDistance());
-        bool ultrasonic_difference = (likeSonic.getDistance() - oppositeSonic.getDistance()) <= MAX_PERPENDICULAR_DIFFERENCE;
+        bool ultrasonic_difference = (
+          likeSonic.getDistance() - oppositeSonic.getDistance()
+          ) <= MAX_PERPENDICULAR_DIFFERENCE;
+
         if (no_gap && ultrasonic_difference) {
           become_perpendicular();
           lastReorientTime = millis(); // Reset the timer
@@ -168,9 +176,16 @@ public:
     if (!(obstacles_cleared >= NUMBER_OF_OBSTACLES)) {
 
       unsigned long lastReorientTime = millis(); // Initialize the timer
-      while (leftSonic.getDistance() >= MEAN_DISTANCE || rightSonic.getDistance() >= MEAN_DISTANCE ){
+      while (
+        (leftSonic.getDistance() >= MEAN_DISTANCE) ||
+        (rightSonic.getDistance() >= MEAN_DISTANCE)){
         bot.move(UP,FORWARD_SPEED);
-        if ((millis() - lastReorientTime >= REORIENT_TIME) && (GAP_DISTANCE >= leftSonic.getDistance()) && (GAP_DISTANCE >= rightSonic.getDistance())) {
+
+        if (
+          (millis() - lastReorientTime >= REORIENT_TIME) &&
+          (GAP_DISTANCE >= leftSonic.getDistance())
+          && (GAP_DISTANCE >= rightSonic.getDistance())) {
+            
           become_perpendicular();
           lastReorientTime = millis(); // Reset the timer
         }

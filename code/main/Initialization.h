@@ -2,15 +2,12 @@
  * @file Initialization.h
  * @brief Header for initialization functions of various system components.
  *
- * This header file contains declarations and initialization functions for different hardware components such as motors, 
- * sensors, and controllers used in a robotics system. It sets up motors, ultrasonic sensors, color sensors, servos, 
- * and other devices to their initial states and configurations.
+ * This header file contains declarations and initialization functions for different
+ * hardware components such as motors, sensors, and controllers used in a robotics system.
+ * It sets up motors, ultrasonic sensors, color sensors, servos, and other devices to their
+ * initial states and configurations.
  *
- * Created by: [Your Name]
- * Date: [Creation Date]
- *
- * Modifications:
- * Date: [Modification Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef INITIALIZATION_H
@@ -268,7 +265,8 @@ void initColorSensors(){
 }
 
 /**
- * Initializes calibration points for color sensors. This includes RGB values for different colors to aid in accurate detection.
+ * Initializes calibration points for color sensors. This includes RGB values for different
+ * colors to aid in accurate detection.
  */
 void initColorCalibrations(){
 

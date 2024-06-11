@@ -6,11 +6,7 @@
  * the motion of servo motors in robotic applications, specifically targeting models from ServoCity's
  * 2000 series dual mode servo (25-2, Torque) and (25-3, Speed).
  *
- * Created by: [Your Name]
- * Date: [Creation Date]
- *
- * Modifications:
- * Date: [Modification Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef MWSERVO_H

@@ -7,11 +7,7 @@
  * the initialization of sensor pins and the calculation of distance based on the sensor's
  * echo times.
  *
- * Created by: [Your Name]
- * Date: [Creation Date]
- *
- * Modifications:
- * Date: [Modification Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef ULTRASONIC_H

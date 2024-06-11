@@ -23,12 +23,12 @@ The battery used in this vehicle was a $\SI{12}{\volt}$ battery with an on and o
 
 \subsection{3-D Printed sensor mounts}
 \subsubsection{Ultrasonic Sensor and Color Sensor Mounts}
-The ultrasonic sensors and color sensors were placed on the 3D printed sensor mounts. The design is shown in \hl{FIGURE}. These mounts were attached to the bottom grid plate on either side of the vehicle’s front wheel. The side sensor mounts were designed to house the ultrasonic sensors in a position where they would sense further outwards than the furthest edge of the wheel to avoid the vehicle hitting the obstacles during the tests. The ultrasonic sensors were placed in a forward facing position, while the color sensors were attached facing towards the floor for color recognition. The color sensors were housed by a curtain as a part of the sensor mounts to avoid external light messing with the color sensing ability.
+The ultrasonic sensors and color sensors were placed on the 3D printed sensor mounts. The design is shown in Figure B.12. These mounts were attached to the bottom grid plate on either side of the vehicle’s front wheel. The side sensor mounts were designed to house the ultrasonic sensors in a position where they would sense further outwards than the furthest edge of the wheel to avoid the vehicle hitting the obstacles during the tests. The ultrasonic sensors were placed in a forward facing position, while the color sensors were attached facing towards the floor for color recognition. The color sensors were housed by a curtain as a part of the sensor mounts to avoid external light messing with the color sensing ability.
 \subsubsection{Front-Central Ultrasonic Sensor Mount}
-The middle ultrasonic sensor mount had a design to which it would attach to the top of the bottom grid plate and curve over the top of the front wheel. This curve was such that it would not interfere with the front wheel, and there was sufficient space for the attachment of wires to the ultrasonic sensor without interference. This design allowed for the central front facing ultrasonic sensor to be further forward than the rest of the vehicle, and allowed for the vehicle to sense the platform on which the box is located for the pickup and placement test. The front-central ultrasonic sensor mount can be seen in \hl{FIGURE}.
+The middle ultrasonic sensor mount had a design to which it would attach to the top of the bottom grid plate and curve over the top of the front wheel. This curve was such that it would not interfere with the front wheel, and there was sufficient space for the attachment of wires to the ultrasonic sensor without interference. This design allowed for the central front facing ultrasonic sensor to be further forward than the rest of the vehicle, and allowed for the vehicle to sense the platform on which the box is located for the pickup and placement test. The front-central ultrasonic sensor mount can be seen in Figure B.8.
 
 \subsubsection{Lower Infrared Sensor Mount}
-The vehicle’s infrared sensor mount was located beneath the vehicle, and allowed for the \gls{IR} sensor to be as close to the ground as possible for its primary use of line following. The mount was attached to the motor mount of the front wheel, and the \gls{IR} sensor was located right underneath this mount. The sensor mount also acted as an electrical spacer to avoid unwanted contact with metals and the \gls{IR} sensor. The lower \gls{IR} sensor mount can be seen in \hl{FIGURE}. 
+The vehicle’s infrared sensor mount was located beneath the vehicle, and allowed for the \gls{IR} sensor to be as close to the ground as possible for its primary use of line following. The mount was attached to the motor mount of the front wheel, and the \gls{IR} sensor was located right underneath this mount. The sensor mount also acted as an electrical spacer to avoid unwanted contact with metals and the \gls{IR} sensor. The lower \gls{IR} sensor mount can be seen in Figure B.9. 
 
 \section{Gripper}\label{sec:gripper}
 \subsection{Gripper Arm}
@@ -38,9 +38,9 @@ The gripper hand is made up from multiple smaller components. Attached to the gr
 \subsection{Gripper Sensor Mounts and Sensors}
 The sensors for the gripper hand were attached to the claw of the gripper using 3D printed sensor mounts. The sensors on the gripper were used to determine box size, box color, and height of the gripper above the platform. 
 \subsubsection{Left Gripper Sensor Mount and Sensors}
-The left sensor mount was used as an extension to the gripper claw which allowed for the vehicle to more effectively grab the box. Within the extension was placed the color sensor, which had the task of sensing whether the box was blue or red. The left gripper sensor mount can be seen in \hl{FIGURE}.
+The left sensor mount was used as an extension to the gripper claw which allowed for the vehicle to more effectively grab the box. Within the extension was placed the color sensor, which had the task of sensing whether the box was blue or red. The left gripper sensor mount can be seen in Figure B.11.
 \subsubsection{Right Gripper Sensor Mount and Sensors}
-The sensor mount on the right hand side of the vehicle’s gripper had the purpose of allowing the box to be better grabbed as it was an extension of the claw, and also served as a place for an infrared sensor and a button. The infrared sensor allowed the robot to know when it was near the platform and could drop the box. The button had the purpose of letting the robot know which size box was being picked up. The time from when the gripper started closing and when the button was pressed was measured and the robot used this information to determine the box size. The right gripper sensor mount can be seen in \hl{FIGURE}.
+The sensor mount on the right hand side of the vehicle’s gripper had the purpose of allowing the box to be better grabbed as it was an extension of the claw, and also served as a place for an infrared sensor and a button. The infrared sensor allowed the robot to know when it was near the platform and could drop the box. The button had the purpose of letting the robot know which size box was being picked up. The time from when the gripper started closing and when the button was pressed was measured and the robot used this information to determine the box size. The right gripper sensor mount can be seen in Figure B.10.
 
 \section{Breadboards and Pins}\label{sec:breadboard-and-pins}
 \subsection{Teensy 4.1 Microcontroller}
@@ -65,6 +65,8 @@ The two motor controllers situated underneath the lower grid plate bot controlle
 \subsection{Simplification and Neatness Strategy}
 Making sure the wiring in the system was neat and usable was a very important part of this robot. The wires were held together using cable ties, and were attached to the grid plate using the same method. This ensured that all wires from a particular sensor were held together and there were no loose wires. The sensor mounts allowed for additional simplification, as well as the soldering of the motor and motor controller wires. 
 \par Each wire corresponded with a particular color in accordance to \hl{FIGURE}, which helped maintain the simplicity of the system and allowed for knowing what comes where. 
+\subsection{Circuit Diagram}
+The circuit diagram for this system is available in the diagrams section, and is seen in Figure B.13. This details the connections between the microcontroller and the color sensors, ultrasonic sensors, IR array, gripper servo motors, and motors. This circuit diagram details where the power comes from in each component. 
 \section{Code}
 \subsection{Color Sensors}
 The basic use of the color sensors was for the robot to recognize certain colors and make decisions based on that recognition. 
@@ -84,4 +86,43 @@ The two \gls{IR} sensors in this robot had different uses. The \gls{IR} sensor o
 
 \subsection{Gripper Button}
 The mechanism of the gripper button allowed the robot to know what size box it was handling. When the gripper started to close around the box, a timer was started. When the button was activated by the box pressing against it, the timer stopped. If this time was below a certain threshold, the box was deemed to be a large box. If this time was above a certain threshold, the box was deemed to be a small box. 
+
+\subsection{Pickup \& Place Flowchart}
+
+The flow chart was split up into multiple sub modules seen in red so that it could be broken up into multiple pages. The red circle and hexagons designate these sub modules. Additionally, ``functions'' have been created with the green color, which take inputs from the sub modules as variables, seen in thicker arrows. See \cref{sc:pickup-place-flowchart} for the flowcharts.
+
+\subsection{Structure}
+
+The code was split up into multiple \texttt{.h} files and then imported into the main file. This was done to create a modular file system and easily isolate specific pieces of code from one another, just by not importing a file in the \texttt{main.h}. The sensors were independent of one another and thus were placed in their own sub-directory, while the code that was built upon the sensors, such as line following, obstacle avoidance, robot movement, etc. was kept in the main folder. The structure of the project can be seen in \cref{fig:code-directory-tree}, and the code itself can be found in \cref{ap:code}.
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \dirtree{%
+        .0 .
+        .1 main.
+        .2 main.ino.
+        .2 BoxControl.h.
+        .2 Initialization.h.
+        .2 LineFollowing.h.
+        .2 Motion.h.
+        .2 ObstacleAvoidance.h.
+        .2 PickupPlace.h.
+        .2 controls.
+        .3 PIDController.h.
+        .3 Utils.h.
+        .2 sensors.
+        .3 Button.h.
+        .3 ColorSensor.h.
+        .3 IRSensorArray.h.
+        .3 MWServo.h.
+        .3 Motor.h.
+        .3 UltraSonic.h.
+        .1 readme.md.
+        }
+    \end{minipage}
+    \caption{Code Directory Tree}
+    \label{fig:code-directory-tree}
+\end{figure}
+
 \end{document}

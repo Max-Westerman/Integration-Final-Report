@@ -5,9 +5,10 @@
  * @file Motion.h
  * @brief Header file for the Movement class, which controls robot movement mechanics.
  *
- * This file contains the class definition for managing the movement of the robot, including
- * directional movement, stopping, turning, and translating over specified distances. It
- * provides interfaces to higher-level motion control operations based on specified parameters.
+ * This file contains the class definition for managing the movement of the robot,
+ * including directional movement, stopping, turning, and translating over specified
+ * distances. It provides interfaces to higher-level motion control operations based on
+ * specified parameters.
  */
 
 #include "Initialization.h"
@@ -35,9 +36,9 @@ enum Cardinal {
  */
 class Movement {
 public:
-  float VERTICAL_VS_HORIZONTAL = 3.9; ///< Normalizer ratio between vertical and horizontal motor PWM.
-  float VERTICAL_LENGTH = 12;         ///< Length of the robot's vertical axis in centimeters.
-  float HORIZONTAL_LENGTH = 9;        ///< Length of the robot's horizontal axis in centimeters.
+  float VERTICAL_VS_HORIZONTAL = 3.9; ///< Normalizer ratio for vert and horiz motor PWM.
+  float VERTICAL_LENGTH = 12;         ///< Length of the robot's vertical axis in cm.
+  float HORIZONTAL_LENGTH = 9;        ///< Length of the robot's horizontal axis in cm.
   float horizontal_distance = 0;      ///< Accumulated horizontal distance traveled.
   float vertical_distance = 0;        ///< Accumulated vertical distance traveled.
 
@@ -48,7 +49,8 @@ public:
   float getHorizontalDistance() {
     topMotor.updateDistance();
     bottomMotor.updateDistance();
-    horizontal_distance = (topMotor.getTotalDistance() + bottomMotor.getTotalDistance()) / 2;
+    horizontal_distance = (
+      topMotor.getTotalDistance() + bottomMotor.getTotalDistance()) / 2;
     return horizontal_distance;
   }
 
@@ -108,7 +110,7 @@ public:
   }
 
   /**
-   * @brief Moves the robot in a specified cardinal direction based on a percentage of maximum speed.
+   * @brief Moves the robot in a givencardinal direction based on a % of maximum speed.
    * @param direction The cardinal direction to move.
    * @param percent_speed The speed percentage to apply.
    */
@@ -143,7 +145,8 @@ public:
   }
 
   /**
-   * @brief Translates the robot in a specified direction for a given distance at a specified speed.
+   * @brief Translates the robot in a specified direction for a given distance at a
+   * specified speed.
    * @param direction The cardinal direction to move.
    * @param percent_pwm The PWM percentage to apply to the motors.
    * @param distance The distance to move in centimeters.
@@ -170,7 +173,9 @@ public:
         speed = max(top_speed,bottom_speed)/1.2;
         break;
       default:
-        Serial.println("TERMINAL ERROR: An incorrect direction was set for the Motion.translate function.");
+        Serial.println("TERMINAL ERROR");
+        Serial.print("An incorrect direction was set for the");
+        Serial.print("Motion.translate function.");
         speed = 0;
         break;
     }
@@ -183,7 +188,8 @@ public:
   }
 
   /**
-   * @brief Performs a turning maneuver in the specified direction at a given PWM percentage.
+   * @brief Performs a turning maneuver in the specified direction at a given PWM
+   * percentage.
    * @param direction The cardinal direction to turn towards.
    * @param percent_pwm The PWM percentage to apply to the motors.
    */

@@ -5,11 +5,7 @@
  * This file contains the definition of the ColorSensor class, which is used to manage
  * and interpret color data from the TCS230/TCS3200 RGB light color recognition sensors.
  * 
- * Created by: [Your Name]
- * Date: [Date]
- * 
- * Modifications:
- * Date: [Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef COLOR_SENSOR_H

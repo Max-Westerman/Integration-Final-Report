@@ -119,4 +119,81 @@ The fourth design reorients the wheels as to be square against the sides, and co
     \item[Box Property Detection --]This gripper sensor layout is identical to the last with a button, denoted \gls{B}, in place of the force sensor, which will operate under a similar algorithm while eliminating the inconsistency of the force sensor.
 \end{description}
 
+\newpage
+\section{Feasibility Analysis}\label{DecisionMatrix}
+In order to compare these designs against one another, one must first create measures by which to rate each design, as well as decide how important each measure is to a theoretical successful project. The following measures, scored on a scale from 1-5, and their relative weightings were combined into a comparative table to create what is considered a decision matrix (\cref{tab:matrix}):
+\begin{adjustwidth}{0.5cm}{0cm}
+\vspace{1em}
+\begin{description}
+    \item[Programmability (1) --]Theoretical ease of programming when considering the number of sensors used and wheel configuration. This is weighted neutrally as the difficulty of creation should be considered negligible, but having the ability to edit the code as need be is crucial to problem solving.\vspace{1em}
+    \item[Dynamicism (1.25) --]Theoretical ability to adapt to numerous circumstances, and how precise the resulting response should be to the ideal response. This is weighted moderately high as one of the design requirements is that the vehicle is adaptable, and increased dynamicism allows for more efficient objective completion.\vspace{1em}
+    \item[Reliability (1.5) --]Ability to complete tasks repeatedly with minimal complications. Ideally, this system should perform 100\% of the time within the specified conditions; hence, this was weighted most severely.\vspace{1em}
+    \item[Mechanical (-0.5) --]Presumed complexity of the mechanical system. It is weighted moderately negative due to the fact that repairs and modifications are harder on more complex systems, and it was crucial that potential mechanical issues are minimized because of the time constraint of this project.\vspace{1em}
+    \item[Algorithmic Complexity (-0.25) --]Presumed complexity of the algorithm required for peak performance. This is weighted negatively in order to reduce the need for troubleshooting during creation, but less than that of Mechanical Complexity because a more complex algorithm could potentially increase performance.
+\end{description}
+\end{adjustwidth}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Metric}} & \multirow{2}{*}{\textbf{Weight}} & \multicolumn{4}{c|}{\textbf{Design}} \\ \cline{3-6}
+ &  & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
+Programmability  & 1      & 5       & 5       & 2       & 4       \\ \hline
+Dynamism         & 1.25   & 1       & 2       & 3       & 5       \\ \hline
+Reliability       & 1.5    & 1       & 2       & 4       & 5       \\ \hline
+Mechanical Complexity & -0.5   & 0       & 0       & 5       & 3       \\ \hline
+Algorithmic Complexity & -0.25  & 5       & 4       & 1       & 0       \\ \hline \hline
+\multirow{2}{*}{\textbf{Score}} &     Weighted   & 12       & 13      & 15    & 17      \\ \cline{2-6}
+&    Unweighted    & 6.5    & 9.5   & 9    & 16.25      \\ \hline
+\end{tabular}
+\caption{Comparison of design concepts via Decision Matrix}
+\label{tab:matrix}
+\end{table}
+
+\newpage
+
+\section{Design 1 (weighted total: 6.5)}\label{matrixdesign1}
+\begin{greylineformat}
+\begin{description}
+    \item[Programmability (5) --]Given the extent of the team's experience with this base model, as well as the relative simplicity of design, coding the robot and debugging the code would be straight-forward.
+    \item[Dynamicism (1) --]This iteration is incredibly outperformed by the others due to the small number of sensors and low-mobility wheel configuration. The sensor configuration simply does not provide enough information for the vehicle to perform acceptably.
+    \item[Reliability (1) --]Again, the lack of fine-vehicle-control and data about the environment creates many reliability issues.
+    \item[Mechanical Complexity (0) --]There is exactly enough on the vehicle to make it run well enough for learning/introductory purposes, but nothing more.
+    \item[Algorithmic Complexity (5) --]Since there are no added features to assist in optimization, such as more sensors or increased mobility, creating an algorithm to complete the moderately complex tasks required of the robot would be a challenge. The only exception being the platform system, which would be easy to code and calibrate, but would also operate slowly when compared to other mechanisms.
+\end{description}
+\end{greylineformat}
+
+\section{Design 2 (weighted total: 9.5)}\label{matrixdesign2}
+\begin{greylineformat}
+\begin{description}
+    \item[Programmability (5) --]This configuration is now more mobile than the last with the addition of \glspl{omni} and there is an added color sensor centered between the existing ones, so not much has changed from a coding perspective. Additionally for the gripper platform, an ultrasonic sensor is easier to tune than an \gls{IR} sensor.
+    \item[Dynamicism (2) --] The \glspl{omni} allow the vehicle to pivot which opens a lot of doors for movement, but the sensor configuration is still lacking.
+    \item[Reliability (2) --] The added information from the new sensor means the vehicle can have less generalized, or more unique functions, which will aid significantly in preventing complications. Additionally, the outwardly-cocked ultrasonic sensors will detect objectives sooner than parallel sensors would.
+    \item[Mechanical Complexity (0) --]Despite an added \acrlong{DoF}, this vehicle is mechanically similar to the previous. 
+    \item[Algorithmic Complexity (4) --]This iteration is only slightly better than the last with the added mobility and sensor making algorithms cleaner and more efficient.
+\end{description}
+\end{greylineformat}
+
+\section{Design 3 (weighted total: 9)}\label{matrixdesign3}
+\begin{greylineformat}
+\begin{description}
+    \item[Programmability (2) --]Swapping the middle color sensor for an \gls{IR} sensor array and adding a middle ultrasonic sensor adds a fair amount of complexity in the system when it comes to having multiple sensors interact. The new configuration of \glspl{omni} also creates an unintuitive movement system with a large potential for imbalances that are hard to debug.
+    \item[Dynamicism (3) --]The new \gls{omni} configuration does, however, allow both crab-walking and cardinal translation, increasing overall efficiency of the wheels.
+    \item[Reliability (4) --]The vehicle base and associated sensors are still about as reliable, if not more, than the previous, but the new gripper mechanism utilizes a force sensor which has been notoriously unreliable and difficult to calibrate.
+    \item[Mechanical Complexity (5) --]The wheel configuration and use of a force sensor make this system overly complex.
+    \item[Algorithmic Complexity (1) --]Ignoring the individual difficulties of components, this vehicle has the potential for high performance without too many complicated unique functions given its mobility.
+\end{description}
+\end{greylineformat}
+
+\section{Design 4 (weighted total: 16.25)}\label{matrixdesign4}
+\begin{greylineformat}
+\begin{description}
+    \item[Programmability (4) --]At this point, there are more sensors than are necessary, so there is a high degree of optimizations and redundancies that can be put in place to get around complications. Additionally, this allows for future modifications of the algorithm without the need to change the robot itself in any way.
+    \item[Dynamicism (5) --]The movement system has been corrected to be relatively square to make fixing motor-imbalances easier, and make the movement system more intuitive for the user for easier troubleshooting.
+    \item[Reliability (5) --]The button functions superior to the force sensor because the button requires more force than is necessary to hold the box while successfully avoiding damage.
+    \item[Mechanical Complexity (3) --]This design is moderately complex both mechanically and electrically, as such, there are a great number of components on a fairly compact frame. This makes modifications and repairs incredibly difficult without sufficient care taken for wire/component management.
+    \item[Algorithmic Complexity (0) --]Unique algorithms can be written for each step towards an objective, or remedy any of the complications along the way due to the vast sensors at the robot's disposal, making the overall algorithm relatively simple.
+\end{description}
+\end{greylineformat}
 \end{document}

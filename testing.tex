@@ -1,47 +1,36 @@
 \documentclass{article}
-\usepackage{forest}
+\usepackage{dirtree}
 
 \begin{document}
 
-\section*{Directory Tree}
-
-% Directory tree example
-\begin{forest}
-  for tree={
-    font=\ttfamily,
-    grow'=0,
-    child anchor=west,
-    parent anchor=south,
-    anchor=west,
-    calign=first,
-    edge path={
-      \noexpand\path [draw, \forestoption{edge}]
-      (!u.south west) +(7.5pt,0) |- (.child anchor) \forestoption{edge label};
-    },
-    before typesetting nodes={
-      if n=1
-        {insert before={[,phantom]}}
-        {}
-    },
-    fit=band,
-    before computing xy={l=15pt},
-  }
-[project/
-  [src/
-    [main.py]
-    [config.py]
-  ]
-  [data/
-    [data1.csv]
-    [data2.csv]
-  ]
-  [docs/
-    [README.md]
-  ]
-  [output/
-    [results.txt]
-  ]
-]
-\end{forest}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \dirtree{%
+        .0 .
+        .1 main.
+        .2 main.ino.
+        .2 BoxControl.h.
+        .2 Initialization.h.
+        .2 LineFollowing.h.
+        .2 Motion.h.
+        .2 ObstacleAvoidance.h.
+        .2 PickupPlace.h.
+        .2 controls.
+        .3 PIDController.h.
+        .3 Utils.h.
+        .2 sensors.
+        .3 Button.h.
+        .3 ColorSensor.h.
+        .3 IRSensorArray.h.
+        .3 MWServo.h.
+        .3 Motor.h.
+        .3 UltraSonic.h.
+        .1 readme.md.
+        }
+    \end{minipage}
+    \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
 
 \end{document}

@@ -5,11 +5,7 @@
  * This file contains the definition of the Motor class, which is used to manage
  * and control a 116 RPM planetary gear motor from ServoCity.
  * 
- * Created by: [Your Name]
- * Date: [Date]
- * 
- * Modifications:
- * Date: [Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef MOTOR_H

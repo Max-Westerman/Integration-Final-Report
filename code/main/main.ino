@@ -17,14 +17,14 @@
 /**
  * @brief Initializes the robot's modules and sensors.
  * 
- * Setup function that initializes communication settings, sensor modules, motor controllers,
- * and other necessary components to start the robot's operation. This includes setting up
- * serial communication, initializing various sensors and motors, and preparing the robot
- * for its main operational tasks.
+ * Setup function that initializes communication settings, sensor modules,
+ * motor controllers, and other necessary components to start the robot's operation. This
+ * includes setting up serial communication, initializing various sensors and motors, and
+ * preparing the robot for its main operational tasks.
  */
 void setup() {
   Serial.begin(9600);   // Start serial communication with a baud rate of 9600
-  // while (!Serial); // Uncomment to ensure that the serial connection is active before continuing
+  // while (!Serial); // Ensures serial communication. If running on battery, comment out.
 
   Serial.println("| ===== Program Start ===== |");
 

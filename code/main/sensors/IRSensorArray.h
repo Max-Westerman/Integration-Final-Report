@@ -5,11 +5,7 @@
  * This file contains the definition of the IRSensorArray class, which is used to manage
  * and process data from an array of infrared sensors, similar to the QTR-8RC Reflectance Sensor Array.
  * 
- * Created by: [Your Name]
- * Date: [Date]
- * 
- * Modifications:
- * Date: [Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef IR_SENSOR_ARRAY_H

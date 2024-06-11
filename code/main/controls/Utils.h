@@ -11,11 +11,7 @@
  * This file contains utility functions that can be used in various Arduino projects.
  * Currently, it includes a function to end the program by entering an infinite loop.
  * 
- * Created by: [Your Name]
- * Date: [Date]
- * 
- * Modifications:
- * Date: [Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 /**

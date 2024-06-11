@@ -1,6 +1,7 @@
 /**
  * @file PickupPlace.h
- * @brief Header file for the PickupPlace class, handling object manipulation following a line navigation system.
+ * @brief Header file for the PickupPlace class, handling object manipulation following a
+ * line navigation system.
  *
  * This file defines the PickupPlace class, which is responsible for picking up an object,
  * following a path to transport it, and placing the object according to its properties.
@@ -18,31 +19,33 @@
 
 /**
  * @class PickupPlace
- * @brief Manages the sequence of operations for picking up and placing objects, utilizing sensor input and motor output.
+ * @brief Manages the sequence of operations for picking up and placing objects, utilizing
+ * sensor input and motor output.
  *
- * The PickupPlace class orchestrates a complex sequence of actions involving navigation to an object,
- * acquiring it, navigating along a designated path, and placing the object based on detected characteristics.
- * It interacts with a variety of sensors and actuators to achieve precise and reliable operation.
+ * The PickupPlace class orchestrates a complex sequence of actions involving navigation
+ * to an object, acquiring it, navigating along a designated path, and placing the object
+ * based on detected characteristics. It interacts with a variety of sensors and actuators
+ * to achieve precise and reliable operation.
  */
 class PickupPlace {
 public:
-  float background_distance = 45;           ///< Maximum range for Ultrasonic sensors to consider.
-  float i_beam_approach_distance = 15;      ///< Target distance from the pickup or placement platform for stopping.
-  float i_beam_approach_speed = 70;         ///< Speed to approach the platforms.
-  float starting_line_catch_speed = 80;     ///< Initial speed to locate the starting line.
-  int window_size = 4;                      ///< Moving average window size for sensor readings.
+  float background_distance = 45;          ///< Max range for Ultrasonic sensors.
+  float i_beam_approach_distance = 15;     ///< Distance for stopping at platform.
+  float i_beam_approach_speed = 70;        ///< Speed to approach the platforms.
+  float starting_line_catch_speed = 80;    ///< Initial speed to locate the starting line.
+  int window_size = 4;                     ///< Moving average window size for readings.
 
-  float following_speed = 70;               ///< Standard speed for following lines.
-  float horizontal_centering_speed = 70;    ///< Speed for horizontal adjustments to center on platforms.
+  float following_speed = 70;              ///< Standard speed for following lines.
+  float horizontal_centering_speed = 70;   ///< Speed for horizontal adjustments.
 
-  IRLineFollower quickFollower;             ///< Configured for faster, less precise line following.
-  IRLineFollower carefulFollower;           ///< Configured for more careful, precise line following.
+  IRLineFollower quickFollower;            ///< Faster, less precise line following.
+  IRLineFollower carefulFollower;          ///< More careful, precise line following.
 
   /**
    * @brief Constructs and configures two types of line followers: quick and careful.
    */
   PickupPlace() {
-    // Configuration of line followers with different PID settings for different line following behaviors
+    // Configuration of line followers with different PID settings for different behaviors
     quickFollower.kp = 100;
     quickFollower.ki = 0;
     quickFollower.kd = 29;
@@ -63,9 +66,11 @@ public:
   }
 
   /**
-   * @brief Moves the robot towards the platform until it reaches the specified i_beam_approach_distance.
+   * @brief Moves the robot towards the platform until it reaches the specified
+   * i_beam_approach_distance.
    * 
-   * Uses ultrasonic sensors to measure distance to the platform and moves forward until the distance is less than the threshold.
+   * Uses ultrasonic sensors to measure distance to the platform and moves forward until
+   * the distance is less than the threshold.
    */
   void approachPlatform(){
     Serial.println("== Approaching Platform ==");
@@ -79,7 +84,8 @@ public:
   /**
    * @brief Aligns the robot on the initial green line based on detected box color.
    * 
-   * Moves backwards until a green line is detected and then centers on the line based on the box's color.
+   * Moves backwards until a green line is detected and then centers on the line based on
+   * the box's color.
    */
   void orientOnGreenLine(){
     Serial.println("== Orienting on the green line ==");
@@ -91,7 +97,7 @@ public:
       bot.move(DOWN, starting_line_catch_speed);
     }
 
-    // Center on the green line in the direciton related to the box color.
+    // Center on the green line in the direction related to the box color.
     if (box.color == BLUE) {
       centerOnLine (LEFT, GREEN);
     }
@@ -102,15 +108,16 @@ public:
   }
 
   /**
-   * @brief Navigates to the color-coded line associated with the box from the starting position.
+   * @brief Navigates to the box colored line from the starting position.
    * 
-   * Moves forward from the green line and switches to the color line specific to the box's attributes.
+   * Moves forward from the green line and switches to the color line specific to the box's
+   * attributes.
    */
   void goToStartingLine() {
     Serial.println("== Going to Starting Line ==");
     leftColor.moving_average_window = 25;
     rightColor.moving_average_window = 25;
-    leftColor.clearColorHistory(); // Clear the color history from the last operation to get a clean slate.
+    leftColor.clearColorHistory(); // Clear the color history for a clean slate
     rightColor.clearColorHistory();
 
     // The green IR follower is buggy because the tape and tarp read similarly.
@@ -159,9 +166,11 @@ public:
   }
 
   /**
-   * @brief Follows the colored line using a line follower until a termination (green) line is encountered.
+   * @brief Follows the colored line using a line follower until a termination (green) line is
+   * encountered.
    * 
-   * Continuously follows the line at a set speed and checks for the green line that indicates the end of the path.
+   * Continuously follows the line at a set speed and checks for the green line that indicates the
+   * end of the path.
    */
   void followUntilGreen(){
     Serial.println("== Following until the green line =");
@@ -181,18 +190,20 @@ public:
   /**
    * @brief Manages navigation at a fork, directing the robot based on the box size.
    * 
-   * Depending on the box's size, chooses a direction at a fork in the line and follows it to the designated drop-off point.
+   * Depending on the box's size, chooses a direction at a fork in the line and follows it to the
+   * designated drop-off point.
    */
   void navigateFork(){
     /*
-    We're now on the green trigger line after the main line following portion of the test. There's a fork indicating we go left or right based on the box size.
+    We're now on the green trigger line after the main line following portion of the test. There's
+    a fork indicating we go left or right based on the box size.
     */
     Serial.println("== Navigating the final fork ==");
     // Initialize windows to ensure modularity.
     rightColor.moving_average_window = window_size;
     leftColor.moving_average_window = window_size;
     middleColor.moving_average_window = window_size;
-    // Move off of the green line by 5 cm so we're off of the green line.
+    // Move off of the green line by 9 cm so we're off of the green line.
     bot.translate(UP,100,9);
     // Now that we're off the line, we can move until our center color sensor sees the correct line.
     // This makes sure that we're now lined up with the line if we became off-centered from the main line sensing portion
@@ -212,6 +223,8 @@ public:
     bot.stopMotion();
   }
 
+
+
   /**
    * @brief Centers the robot on the final part of the path after navigating through the fork.
    * 
@@ -219,7 +232,8 @@ public:
    */
   void orientOnFinalLine(){
     /*
-    We're now slightly above the horizontal portion of the final fork. We want to move left or right depending on the size of the box.
+    We're now slightly above the horizontal portion of the final fork. We want to move left or right
+    depending on the size of the box.
     */
     Serial.println("== Orienting on the final line =");
     middleColor.clearColorHistory();    // Clear as this is a new operation.
@@ -256,13 +270,15 @@ public:
   /**
    * @brief Approaches the final platform, stopping within a precise distance for object placement.
    * 
-   * Uses careful navigation to approach the platform and prepares for object placement by aligning with the platform edge.
+   * Uses careful navigation to approach the platform and prepares for object placement by aligning
+   * with the platform edge.
    */
   void approachEndPlatform(){
     Serial.println("== Approaching the last platform ==");
     /*
     The platform is now in front of us, but the left ultrasonic sensor is not in the middle of the bot.
-    Thus, to sense when we've reached the platform, we should use the ir sensor. This function will stop once we've found it.
+    Thus, to sense when we've reached the platform, we should use the ir sensor. This function will
+    stop once we've found it.
     */
 
     // While the platform ir sensor isn't reading, follow the line and move forward.
@@ -275,7 +291,8 @@ public:
   /**
    * @brief Returns to the main green line after placing the object.
    * 
-   * Navigates back to the green line, preparing for potential additional tasks or to conclude the operation.
+   * Navigates back to the green line, preparing for potential additional tasks or to conclude the
+   * operation.
    */
   void returnToGreen(){
     middleColor.moving_average_window = 25;
@@ -296,13 +313,15 @@ public:
   /**
    * @brief Returns to the fork in the line to continue navigation or repeat the process.
    * 
-   * Re-navigates to a critical decision point in the path to either continue further tasks or to reattempt alignment.
+   * Re-navigates to a critical decision point in the path to either continue further tasks or to
+   * reattempt alignment.
    */
   void returnToFork(){
     Serial.println("== Going back to the fork ==");
     /*
     The platform is now in front of us, but the left ultrasonic sensor is not in the middle of the bot.
-    Thus, to sense when we've reached the platform, we should use the ir sensor. This function will stop once we've found it.
+    Thus, to sense when we've reached the platform, we should use the ir sensor. This function will
+    stop once we've found it.
     */
 
     // While the platform ir sensor isn't reading, follow the line and move forward.
@@ -327,10 +346,6 @@ public:
       }
       bot.stopMotion();
       while (middleColor.getColor() != box.color){
-        bot.move(LEFT,horizontal_centering_speed);
-      }
-    } else if (box.size == SMALL) {
-      while (rightColor.getColor() != box.color){
         bot.move(RIGHT,horizontal_centering_speed);
       }
       bot.stopMotion();

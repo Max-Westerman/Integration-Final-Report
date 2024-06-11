@@ -21,7 +21,7 @@ public:
   const float max_threshold = 1; ///< Upper threshold for error handling.
   const float min_threshold = 0.55; ///< Lower threshold for error handling.
 
-  bool if_catch_lines = true; ///< Flag to determine if the robot uses delay turns on colors.
+  bool if_catch_lines = true; ///< Determines if the robot uses 'delay turns' on colors.
   bool reverse_wheels = true; ///< Flag to enable wheel reversal for turning maneuvers.
   Color follow_color; ///< Color of the line being followed.
   float error; ///< Current error value calculated by sensors.
@@ -74,19 +74,20 @@ public:
    */
   void handleLineCatching() {
     if (if_catch_lines) {
-      if ((leftColor.getColor() == follow_color) || (rightColor.getColor() == follow_color)) {
-        if (leftColor.color == follow_color) {
-          bot.turn(LEFT, turn_pwm);
-          delay(turn_delay);
-        } else if (rightColor.color == follow_color) {
-          bot.turn(RIGHT, turn_pwm);
-          delay(turn_delay);
-        }
-        bot.stopMotion();
-        leftColor.clearColorHistory();
-        rightColor.clearColorHistory();
+    if ((leftColor.getColor() == follow_color) || (rightColor.getColor() == follow_color))
+    {
+      if (leftColor.color == follow_color) {
+        bot.turn(LEFT, turn_pwm);
+        delay(turn_delay);
+      } else if (rightColor.color == follow_color) {
+        bot.turn(RIGHT, turn_pwm);
+        delay(turn_delay);
       }
+      bot.stopMotion();
+      leftColor.clearColorHistory();
+      rightColor.clearColorHistory();
     }
+  }
   }
 
   /**
@@ -221,9 +222,9 @@ void centerOnLine(Cardinal rotation, Color follow_color) {
 /**
  * @brief Searches for and aligns the robot along X-axis by detecting specified line color.
  * 
- * This function attempts to locate the line by moving in a zigzag pattern. Once the line is
- * found, it stops the robot and translates it to adjust the position on the X-axis, ensuring
- * accurate alignment.
+ * This function attempts to locate the line by moving in a zigzag pattern. Once the line
+ * is found, it stops the robot and translates it to adjust the position on the X-axis,
+ * ensuring accurate alignment.
  * 
  * @param find_color The color of the line to locate and align with.
  */

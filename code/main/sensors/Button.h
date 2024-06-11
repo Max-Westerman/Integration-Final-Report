@@ -5,11 +5,7 @@
  * This file contains the definition of the Button class, which is used to manage
  * the state and initialization of a button connected to an Arduino pin.
  * 
- * Created by: [Your Name]
- * Date: [Date]
- * 
- * Modifications:
- * Date: [Date] [Description of modification]
+ * Created by: Max Westerman
  */
 
 #ifndef BUTTON_H
