@@ -2,7 +2,7 @@
 \usepackage{StyleSheets/main}
 \begin{document}
 
-\chapter{Diagrams}
+\chapter{Diagrams}\label{ap:diagrams}
 
 \section{Robot Designs}
 \label{sc:designs}
@@ -40,69 +40,103 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/Robot/robot_front_view.pdf}
-    \caption{Front view, with wires}
+    \caption{Robot front view}
     \label{fig:front-view}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.68\textwidth]{Images/Robot/robot_underside.pdf}
-    \caption{Underside, with wires}
+    \caption{Robot underside}
     \label{fig:underside}
 \end{figure}
-
-
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Images/Robot/robot_top_view.pdf}
-    \caption{Top view, with wires}
+    \caption{Robot top view}
     \label{fig:topview}
 \end{figure}
-\section{Pinout Maps for Teensy}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/PinoutMap/Pinout map.PNG}
-    \caption{Teensy Microcontroller Pinout Map}
-    \label{fig:Pinoutmap}
-\end{figure}
+
 \section{3D Printed Parts}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/3D prints/USS_Front ENGR Drawing.JPG}
+    \includegraphics[width=1\textwidth]{Images/3D prints/USS_Front_new.PNG}
     \caption{Front Ultrasonic Sensor Mount}
     \label{fig:USS_front}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/3D prints/CS-IR_M ENGR Drawing.JPG}
+    \includegraphics[width=1\textwidth]{Images/3D prints/CS-IR_M_new.PNG}
     \caption{Color Sensor - IR Sensor Mount}
     \label{fig:CS-IR mount}
 \end{figure}
+
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/3D prints/GRPR_CS_Long ENGR Drawing.JPG}
+    \includegraphics[width=1\textwidth]{Images/3D prints/GRPR_CS_Long_new.PNG}
     \caption{Gripper Color Sensor Mount}
     \label{fig:GRPR_CS}
 \end{figure}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/3D prints/GRPR_DualButton ENGR Drawing.JPG}
+    \includegraphics[width=1\textwidth]{Images/3D prints/GRPR_DualButton_new.PNG}
     \caption{Gripper Button Mount}
     \label{fig:GRPR_DualButton}
 \end{figure}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/3D prints/USS-CS_Dual ENGR Drawing.JPG}
+    \includegraphics[width=1\textwidth]{Images/3D prints/USS-CS_Dual_new.PNG}
     \caption{Ultrasonic Sensor and Color Sensor Mounts}
     \label{fig:USS-CS_Dual}
 \end{figure}
-\section{Circuit Diagram}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 1.2\textwidth,angle=90, keepaspectratio]{Images/Diagrams/circuit (1).png}
+    \includegraphics[width=1\textwidth]{Images/Cost/slice1.pdf}
+    \caption{Cost of first 3D-print.}
+    \label{fig:printcost1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/Cost/slice2.pdf}
+    \caption{Cost of second 3D-print.}
+    \label{fig:printcost2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/Cost/slice3.pdf}
+    \caption{Cost of third 3D-print.}
+    \label{fig:printcost3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/Cost/ir_cost.pdf}
+    \caption{Cost of the \gls{IR} sensor array.}
+    \label{fig:enter-label}
+\end{figure}
+
+\section{Electrical Diagrams}
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1.1\textwidth,angle=270, keepaspectratio]{Images/Diagrams/robot_pinout.pdf}
     \caption{Circuit Diagram}
     \label{fig:CircuitDiagram}
+\end{figure}
+
+\subsection{Pinout Map for Teensy 4.1}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/PinoutMap/Pinout map.PNG}
+    \caption{Teensy 4.1 Microcontroller Pinout Map}
+    \label{fig:Pinoutmap}
 \end{figure}
 
 \section{Pickup \& Place Flowchart}\label{sc:pickup-place-flowchart}
@@ -178,4 +212,16 @@
     \label{fig:fc:return-home}
 \end{figure}
 
+\newpage\section{Pickup-and-Place Line Course}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1.1\textwidth,angle = 270,keepaspectratio]{Images/Diagrams/pickup_place_course.pdf}
+    \caption{Pickup-and-Place course.\protect\footnotemark}
+    \label{fig:pickup-place-course}
+\end{figure}
+\footnotetext{Note that within the vertical, green lines are the boundaries of the randomized region of the course.}
+
 \end{document}
+
+    \includegraphics[width = 1.1\textwidth,angle=270, keepaspectratio]{Images/Diagrams/robot_pinout.pdf}
+    \caption{Circuit Diagram}
