@@ -138,27 +138,9 @@
         }{}
         \end{axis}
     \end{tikzpicture}
-    \caption{Visual representation of color matching algorithm. \protect\footnotemark}
+    \caption{Visual representation of color matching algorithm.\protect\footnotemark}
     \label{fig:color-calibration-distance-example}
 \end{figure}
 \footnotetext{The orange dot is the seen color by the sensor, and the nearest calibration point is blue, thus the color seen is set to blue.}
 
 \end{document}
-
-            % SEEN point on bottom wall
-            \addplot3[only marks, mark = *, fill = \seencolor,fill opacity = \shadowopacity, draw opacity = 0, mark size = \ballsize*0.9] coordinates {(\seenx, \seeny, 0)};
-
-            % CALIBRATION point on bottom wall
-            \addplot3[only marks, mark = *, fill = \calicolor,fill opacity = \shadowopacity, draw opacity = 0, mark size = \ballsize*0.9] coordinates {(\calix, \caliy, 0)};
-
-            % Line on bottom wall
-            \addplot3[ no marks,thick, line width=0.5mm, color=\seencolor, opacity = \shadowopacity, -latex] coordinates {(\seenx, \seeny, 0) (\calix, \caliy, 0)};
-
-            % SEEN point on right wall
-            \addplot3[only marks, mark = *, fill = \seencolor,fill opacity = \shadowopacity, draw opacity = 0, mark size = \ballsize*0.9] coordinates {(\maxx, \seeny, \seenz)};
-
-            % CALIBRATION point on right wall
-            \addplot3[only marks, mark = *, fill = \calicolor,fill opacity = \shadowopacity, draw opacity = 0, mark size = \ballsize*0.9] coordinates {(\maxx, \caliy, \caliz)};
-
-            % Line on right wall
-            \addplot3[ no marks,thick, line width=0.5mm, color=\seencolor, opacity = \shadowopacity, -latex] coordinates {(\maxx, \seeny, \seenz) (\maxx, \caliy, \caliz)};
