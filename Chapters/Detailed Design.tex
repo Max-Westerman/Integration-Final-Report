@@ -56,7 +56,7 @@ The second breadboard used contained two \gls{DC}-\gls{DC} converters (buck conv
 \par One DC-DC converter was used to step down the $\SI{12}{\volt}$ from the battery to $\SI{7.4}{\volt}$ for the use of the motors which drive the vehicle. This voltage allowed the motors to operate at maximum capacity. The other converter was used to power the Teensy 4.1, stepping the voltage down to $\SI{5}{\volt}$.
 
 \subsection{LED System}
-The \gls{LED} system on the breadboard represented a system to show whether the battery was turned on or not. If the battery was on, the \gls{LED} would shine and if not, it would e off. This helped know whether the system was active or not. The \gls{LED} was connected to the system using the voltage from the \gls{DC}-\gls{DC} converters and a resistor in series with the \gls{LED}.
+The \gls{LED} system on the breadboard represented a system to show whether the battery was turned on or not. If the battery was on, the \gls{LED} would shine and if not, it would turn off. This helped know whether the system was active or not. The \gls{LED} was connected to the system using the voltage from the \gls{DC}-\gls{DC} converters and a resistor in series with the \gls{LED}.
 
 \section{Wiring}\label{sec:wiring}
 \subsection{Sensors}
@@ -142,7 +142,7 @@ The flow chart was split up into multiple sub modules seen in red so that it cou
 
 \subsection{Structure}
 
-The code was split up into multiple \texttt{.h} files and then imported into the main file. This was done to create a modular file system and easily isolate specific pieces of code from one another, just by not importing a file in the \texttt{main.h}. The sensors were independent of one another and thus were placed in their own sub-directory, while the code that was built upon the sensors, such as line following, obstacle avoidance, robot movement, etc. was kept in the main folder.
+The code was split up into multiple \texttt{.h} files and then imported into the main file. This was done to create a modular file system and easily isolate specific pieces of code from one another, just by not importing a file in the \texttt{main.ino}. The sensors were independent of one another and thus were placed in their own sub-directory, while the code that was built upon the sensors, such as line following, obstacle avoidance, robot movement, etc. was kept in the main folder.
 
 \begin{figure}[H]
     \centering

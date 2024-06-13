@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}   % Page margins to 1 inch
+\usepackage{siunitx}
+\NewDocumentCommand\Pounds{o}{%
+\pounds\IfNoValueTF{#1}%
+{\relax}{\,\num[round-precision=2,round-mode=places]{#1}}}
+% Define a new command for formatting dollar amounts
+\NewDocumentCommand\Dollars{o}{%
+  \$\IfNoValueTF{#1}%
+    {\relax}{\,\num[round-precision=2, round-mode=places]{#1}}}
+
+\begin{document}
+\section{Formatting}
+\begin{enumerate}
+    \item Rework header \& footer to include the chapter title and be less busy.
+    \item Standardize capitalization for figures.
+    \item Footnotes are being pulled into the list of figures, seen on fig. 7.2.
+    \item Remove the extra large margin created by chapter*'s
+    \item Remove the extra page created by the list of x's (especially the list of tables)
+    \item Kerning all around seems a little off.
+    \item The \texttt{IR array} is sometimes refered to as \texttt{IR Array} --- fix that.
+    \item Normalize the flowchart's style (ex. the arrows are different types).
+    \item Include robust intro and outro paragraphs to each chapter for better flow
+    \item Bottom-justify the footnote for the color matching algorithm figure.
+    \item omni should be possibly shown as ``Omni'' in the glossary.
+    \item For `Integration II', use roman numerals so the II's connect at the top.
+    \item Draw dimensions on the robot with reference rulers
+    \item Fix dollar sign's to have the little space between then. I.E. \$14 vs \Dollars[14].
+    \item Remove mentions of ``we'', seen in System Test \& Verification.
+    \item In System Test \& Verification, when `test' is referenced, use a cref to the actual test.
+    \item Standardize labeling of sections and figures and such.
+        \quad \\ Ex. some are CamelCase, some are some-case, etc.
+    \item Remove mentions of `this system'
+        \quad \\ Ex. Seen in System Analysis \& System Performance Metrics beginning paragraph
+    \item Recreate the greyline environment
+        \begin{itemize}
+            \item In some circumstances it creates a much larger margin on the top and bottom that needed to be rectified elsewhere
+        \end{itemize}
+    \item Remove the ``overfull hbox'' warnings
+    \item 3\textsuperscript{rd} bibliography entry has really bad kerning.
+    \item Bibliography formatting
+    \item middleColor sensor graph should be larger
+    \item Find a way to automatically make a figure fill up the rest of the space on the page.
+        \quad \\ For example, middleColor sensor has missing space beneath it.
+    \item Change the naming from middleColor \& leftColor etc. to Middle color, Left color, etc. on the calibraiton graphs
+    \item Determine if periods are wanted after figure titles or not
+    \item Determine if capitalized references are wanted. For example, do you say figure X in a sentence of Figure X?
+\end{enumerate}
+\section{Content}
+\begin{enumerate}
+    \item Add a listing of all the components used.
+    \item Obstacle Avoidance flowchart.
+    \item Remove mentions of design 1 \& design 2 in the Project Management plan --- they don't refer to the designs seen in the appendix.
+    \item Include more photos of the construction, like the gearbox being taken apart, photos of the robot on the course itself, and a 3/4ths view
+    \item Include an in-depth explanation of the IR array algorithm and error computation. 
+    \item Mention the IR-array's moving average
+    \item Include descriptions next to the flowchart to aid understanding
+    \item Include robust intro and outro paragraphs to each chapter for better flow
+    \item Get the timing info of other teams from the TA's
+    \item Explain how the motor controller calibration happened \& what benefits it gives
+    \item Remove dollar cost from detailed design
+    \item Determine the reasoning for the missing checkmarks in System Test and Verification
+    \item Add a link to the videos of the robot working
+    \item Include the 3D printed files in the \LaTeX \ directory
+    \item Add the obstacle avoidance course to the appendix
+\end{enumerate}
+
+\section{Code}
+\subsection{Formatting}
+\begin{enumerate}
+    \item Update code margins to avoid spilling over into the next line.
+    \item Add more code coloring, like \textless \ include \textgreater's and such.
+    \item Add a full documentation history for each file
+    \item Re-comment many of the files, especially \texttt{ObstacleAvoidance.h}
+    \item Color A3, A4, A5, A6, A7, A8, \& A9 to black. Currently being colored as green as they are considered to be numbers.
+    \item Possibly reduce font size for better comments
+    \item Determine unused variables and remove them
+    \item Place Utils somewhere else as it's small. Possibly figure out the actual way arduino should shut off.
+    \item Rename CenterOnLine and CenterLine, as they do very different things.
+\end{enumerate}
+
+\subsection{Logic}
+\begin{enumerate}
+    \item Use header files for their true purpose instead of housing all code inside of them
+    \item Convert all PWM based motor control commands to percentage of total speed commands
+    \item Load in color calibration points from a json or something of the like.
+    \item combine move functions so instead of movePercent and move, is an optional parameter
+\end{enumerate}
+
+\newpage
+\section{Nice to have's}
+\begin{enumerate}
+    \item Replace all hand-drawn designs with \LaTeX \ figures
+    \item Include a clickable link back to the table of contents for the header \& footer
+    \item Rework the risk management section to provide lower risks as they are over-inflated.
+    \item A more understandable motor calibration graph
+    \item Color code the circuit diagram
+\end{enumerate}
+
+\end{document}
